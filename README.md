@@ -1,2 +1,2 @@
 # nocturnal-forest
-A metroidvania game
+A Metroidvania game made in Unity
