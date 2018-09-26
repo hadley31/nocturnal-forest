@@ -8,6 +8,8 @@ public class CharacterMovement : CharacterBase
 
 	[SerializeField] private float m_MoveSpeed = 10f;
 	[SerializeField] private float m_JumpForce = 550f;
+	[SerializeField] private float m_JumpCounterForce = 330f;
+	[SerializeField] private float m_JumpFinishedCounterForce = 500f;
 	[SerializeField] private float m_JumpDuration = 1.0f;
 	[SerializeField] private float m_DashDistance = 5.0f;
 	[SerializeField] private GameObject poof;
@@ -138,12 +140,18 @@ public class CharacterMovement : CharacterBase
 			if ( m_Grounded && m_Anim.GetBool ("Ground") )
 			{
 				m_Grounded = false;
+				m_JumpFinished = false;
 				m_JumpTimer = 0;
 				m_Anim.SetBool ("Ground", false);
 				m_Rigidbody2D.AddForce (Vector2.up * m_JumpForce);
 			}
 
 			m_Jump = false;
+		}
+		else if ( !m_Grounded )
+		{
+			float force = m_JumpFinished ? m_JumpFinishedCounterForce : m_JumpCounterForce;
+			m_Rigidbody2D.AddForce (Vector3.down * force);
 		}
 	}
 
@@ -181,7 +189,6 @@ public class CharacterMovement : CharacterBase
 	public void StartJump ()
 	{
 		m_Jump = true;
-		m_JumpFinished = false;
 	}
 
 
