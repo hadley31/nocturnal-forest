@@ -9,19 +9,19 @@ public class EntUnityEvent : UnityEvent<Entity> { }
 [System.Serializable]
 public class IntUnityEvent : UnityEvent<int> { }
 
-[RequireComponent (typeof (Rigidbody)), RequireComponent (typeof (BoxCollider))]
+[RequireComponent (typeof (Rigidbody2D)), RequireComponent (typeof (Collider2D))]
 public sealed class Trigger : EntityBase
 {
 	public EntUnityEvent onTriggerEnter;
 	public EntUnityEvent onTriggerStay;
 	public EntUnityEvent onTriggerExit;
 
-	public Collider Collider
+	public Collider2D Collider
 	{
 		get;
 		private set;
 	}
-	public Rigidbody Rigidbody
+	public Rigidbody2D Rigidbody
 	{
 		get;
 		private set;
@@ -31,15 +31,15 @@ public sealed class Trigger : EntityBase
 
 	private void Awake ()
 	{
-		Collider = GetComponent<Collider> ();
-		Rigidbody = GetComponent<Rigidbody> ();
+		Collider = GetComponent<Collider2D> ();
+		Rigidbody = GetComponent<Rigidbody2D> ();
 
 		Collider.isTrigger = true;
 		Rigidbody.isKinematic = true;
-		Rigidbody.useGravity = false;
+		Rigidbody.gravityScale = 0.0f;
 	}
 
-	private void OnTriggerEnter (Collider other)
+	private void OnTriggerEnter2D (Collider2D other)
 	{
 		Entity ent = other.GetComponent<Entity> ();
 		if ( ent != null )
@@ -48,7 +48,7 @@ public sealed class Trigger : EntityBase
 		}
 	}
 
-	private void OnTriggerStay (Collider other)
+	private void OnTriggerStay2D (Collider2D other)
 	{
 		Entity ent = other.GetComponent<Entity> ();
 		if ( ent != null )
@@ -57,7 +57,7 @@ public sealed class Trigger : EntityBase
 		}
 	}
 
-	private void OnTriggerExit (Collider other)
+	private void OnTriggerExit2D (Collider2D other)
 	{
 		Entity ent = other.GetComponent<Entity> ();
 		if ( ent != null )

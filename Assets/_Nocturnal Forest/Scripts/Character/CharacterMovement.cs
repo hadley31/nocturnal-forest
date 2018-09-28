@@ -21,7 +21,7 @@ public class CharacterMovement : CharacterBase
 	#region Hidden Fields
 
 	private Transform m_GroundCheck;
-	const float k_GroundedRadius = .2f;
+	const float k_GroundedRadius = .1f;
 
 	private Transform m_CeilingCheck;
 	const float k_CeilingRadius = .01f;
