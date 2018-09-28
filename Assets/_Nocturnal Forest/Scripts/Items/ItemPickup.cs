@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (SpriteRenderer))]
 public class ItemPickup : MonoBehaviour
 {
+	public static ItemPickup Spawn (ItemPickup prefab, Item item, Vector2 position, Quaternion rotation)
+	{
+		ItemPickup pickup = Instantiate (prefab, position, rotation);
+
+		pickup.Prime (item);
+
+		return pickup;
+	}
+
 	private SpriteRenderer m_Renderer;
 
 	[SerializeField] private float rotateSpeed = 30.0f;
@@ -24,7 +32,7 @@ public class ItemPickup : MonoBehaviour
 		{
 			if ( !m_Renderer )
 			{
-				m_Renderer = GetComponent<SpriteRenderer> ();
+				m_Renderer = GetComponentInChildren<SpriteRenderer> ();
 			}
 			return m_Renderer;
 		}
@@ -34,11 +42,29 @@ public class ItemPickup : MonoBehaviour
 	{
 		Item = item;
 		Renderer.sprite = Item?.Sprite;
+		Invoke ("EnableTrigger", 0.5f);
 	}
 
 	private void Update ()
 	{
-		transform.position += Vector3.up * Mathf.Sin (Time.time * bobSpeed) * bobAmplitude;
-		transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
+		Renderer.transform.localPosition = Vector3.up * (Mathf.Sin (Time.time * bobSpeed) * bobAmplitude + bobAmplitude);
+		Renderer.transform.Rotate (0, rotateSpeed * Time.deltaTime, 0, Space.Self);
+	}
+
+	public void Pickup (Inventory inv)
+	{
+		print ($"Picked up item: {Item.Name}");
+
+		if (Item != null)
+		{
+			inv?.Add (Item);
+		}
+
+		Destroy (gameObject);
+	}
+
+	private void EnableTrigger ()
+	{
+		GetComponentInChildren<CircleCollider2D> ().enabled = true;
 	}
 }

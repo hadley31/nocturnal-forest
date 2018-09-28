@@ -4,6 +4,19 @@ using UnityEngine;
 
 public abstract class CharacterBase : MonoBehaviour
 {
+	private Inventory m_Inventory;
+	public Inventory Inventory
+	{
+		get
+		{
+			if (m_Inventory == null )
+			{
+				m_Inventory = GetComponent<Inventory> ();
+			}
+			return m_Inventory;
+		}
+	}
+
 	private CharacterInput m_PlayerInput;
 	public CharacterInput PlayerInput
 	{

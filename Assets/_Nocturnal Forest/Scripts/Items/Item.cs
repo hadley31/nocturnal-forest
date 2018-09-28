@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Item
+public class Item : MonoBehaviour
 {
-	public int ID;
 	public string Name;
+	public int ID;
 	public string Desc;
 	public string Type;
+	public bool consumable;
 	public Sprite Sprite;
 
 	public Item (int id, string name, string desc, string type)

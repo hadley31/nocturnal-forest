@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemDictionary : ScriptableObject
 {
-	private static List<Item> items;
+	[SerializeField] private List<Item> items;
 
 	public List<Item> GetAll (System.Predicate<Item> predicate)
 	{

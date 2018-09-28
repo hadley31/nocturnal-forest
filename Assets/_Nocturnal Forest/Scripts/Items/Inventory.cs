@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
+	public List<Item> items;
+	public UnityEvent onChanged;
 
-	// Use this for initialization
-	void Start () {
-		
+	public void Add (Item item)
+	{
+		if (items == null )
+		{
+			items = new List<Item> ();
+		}
+
+		items.Add (item);
+		onChanged.Invoke ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public bool Remove (System.Predicate<Item> predicate)
+	{
+		return items?.Remove (items.Find (predicate)) ?? false;
+	}
+
+	public bool Contains (System.Predicate<Item> predicate)
+	{
+		return items?.Exists (predicate) ?? false;
 	}
 }

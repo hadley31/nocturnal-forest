@@ -76,7 +76,7 @@ public class CharacterMovement : CharacterBase
 				m_Grounded = true;
 				break;
 			}
-				
+
 		}
 		m_Anim.SetBool ("Ground", m_Grounded);
 
@@ -110,9 +110,9 @@ public class CharacterMovement : CharacterBase
 	private void Move ()
 	{
 		m_Input = ( m_Crouched ? m_Input * m_CrouchSpeed : m_Input );
-			
+
 		m_Anim.SetFloat ("Speed", Mathf.Abs (m_Input));
-			
+
 		m_Rigidbody2D.velocity = new Vector2 (m_Input * m_MoveSpeed, m_Rigidbody2D.velocity.y);
 
 		if ( m_Input > 0 && !m_FacingRight || m_Input < 0 && m_FacingRight )
@@ -182,7 +182,7 @@ public class CharacterMovement : CharacterBase
 
 	public void Dash ()
 	{
-		m_Dash = true;
+		m_Dash = Inventory?.Contains (x => x.Name == "Boots of Passion") ?? false;
 	}
 
 
