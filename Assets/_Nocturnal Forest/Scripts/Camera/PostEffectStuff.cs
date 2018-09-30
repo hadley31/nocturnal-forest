@@ -6,30 +6,47 @@ public class PostEffectStuff : MonoBehaviour {
 
     public Material mat;
 
-    public float timeToCompleteCycle = 600.0f; //How many real seconds does it take to complete a day night cycle
-    //Currently, the default is a 10 minute cycle. 5 mins for day, 5 mins for night.
+    public float timeToCompleteCycle = 300.0f; //How many real seconds does day or night last together.
 
-    private bool direction = false; //When false, going from day to night. When true, going from night to day.
+    public float transitionTime = 5.0f; //The time to transition from day to evening to night.
+
+    private bool isNight = false;
+
     private float currentBlend = 0.0f;
+    private float timePassed = 0.0f;
 
     void OnRenderImage( RenderTexture src, RenderTexture dest)
     {
-
-        float incAmount = Time.deltaTime / (timeToCompleteCycle / 2);
-        
-        if(direction==false)
+        if (timePassed > (timeToCompleteCycle / 2.0))
         {
-            currentBlend += incAmount;
+            //transition phase
+            float incAmount = Time.deltaTime / (transitionTime / 2.0f);
+            float incAmount2 = Time.deltaTime / (transitionTime);
 
-            if (currentBlend >= 1.0f)
-                direction = true;
+            if (currentBlend <= 2.0f && isNight==false)
+            {
+                currentBlend += incAmount;
+            }
+            else if (currentBlend<=3.0f && isNight==true)
+            {
+                currentBlend += incAmount2;
+            }
+            else
+            {
+                if (isNight == false)
+                    currentBlend = 2.0f;
+                else
+                    currentBlend = 0.0f;
+
+                isNight = !isNight;
+
+                timePassed = 0.0f;
+            }
+
         }
         else
         {
-            currentBlend -= incAmount;
-
-            if (currentBlend <= 0.0f)
-                direction = false;
+            timePassed += Time.deltaTime;
         }
 
         mat.SetFloat("blendFactor", currentBlend);

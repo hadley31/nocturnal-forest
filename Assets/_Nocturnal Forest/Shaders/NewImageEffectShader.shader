@@ -3,7 +3,8 @@
 	Properties
 	{
 		_MainTex ("Screen Texture", 2D) = "white" {} //Do not set in unity
-		_DayColor ("Day Color", Color) = (0,0,0,0)
+		_DayColor("Day Color", Color) = (0,0,0,0)
+		_EveningColor("Evening Color", Color) = (0,0,0,0)
 		_NightColor ("NightColor", Color) = (0,0,0,0)
 	}
 	SubShader
@@ -42,7 +43,7 @@
 			sampler2D _MainTex;
 			fixed4 _DayColor;
 			fixed4 _NightColor;
-
+			fixed4 _EveningColor;
 			uniform float blendFactor;
 
 			fixed4 frag (v2f i) : SV_Target
@@ -51,8 +52,22 @@
 
 				fixed4 col1 = col * _DayColor;
 				fixed4 col2 = col * _NightColor;
+				fixed4 col3 = col * _EveningColor;
 
-				fixed4 finalCol = lerp(col1, col2, blendFactor);
+				fixed4 finalCol;
+
+				if (blendFactor < 1.0)
+				{
+					finalCol = lerp(col1, col3, blendFactor);
+				}
+				else if (blendFactor >= 1.0 && blendFactor < 2.0)
+				{
+					finalCol = lerp(col3, col2, blendFactor-1.0);
+				}
+				else if (blendFactor >= 2.0)
+				{
+					finalCol = lerp(col2, col1, blendFactor - 2.0);
+				}
 				
 				return finalCol;
 			}
