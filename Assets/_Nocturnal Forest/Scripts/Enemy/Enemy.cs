@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
 		if ( c != null )
 		{
 			Vector2 offset = collision.rigidbody.position - collision.otherRigidbody.position;
-			print (offset);
 			if ( Vector2.Dot (offset, Vector2.up) > 0.85f )
 			{
 				GetComponent<Health> ().SetValue (0);

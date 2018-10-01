@@ -33,8 +33,6 @@ public class ItemPickupSpawner : MonoBehaviour
 			if ( addRandomForce )
 			{
 				Vector2 force = (Vector2.up + Vector2.right * Random.Range (-1.0f, 1.0f)).normalized * randomForceMagnitude;
-				
-
 				pickup.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Force);
 			}
 		}

@@ -8,9 +8,8 @@ public class CharacterMovement : CharacterBase
 
 	[SerializeField] private float m_MoveSpeed = 10f;
 	[SerializeField] private float m_JumpForce = 550f;
-	[SerializeField] private float m_JumpCounterForce = 330f;
-	[SerializeField] private float m_JumpFinishedCounterForce = 500f;
-	[SerializeField] private float m_JumpDuration = 1.0f;
+	[SerializeField] private float m_JumpCounterForce = 10;
+	[SerializeField] private float m_JumpFinishedCounterForce = 30f;
 	[SerializeField] private float m_DashDistance = 5.0f;
 	[SerializeField] private GameObject poof;
 	[SerializeField] [Range (0, 1)] private float m_CrouchSpeed = 0.25f;
