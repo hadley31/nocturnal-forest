@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
 	public void OnCollisionEnter2D (Collision2D collision)
 	{
-		Character c = collision.collider.GetComponent<Character> ();
+		Character c = collision.collider.GetComponentInParent<Character> ();
 
 		if ( c != null )
 		{
