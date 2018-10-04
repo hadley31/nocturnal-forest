@@ -12,7 +12,8 @@ public class CharacterMovement : CharacterBase
 	[SerializeField] private float m_JumpFinishedCounterForce = 30f;
 	[SerializeField] private float m_DashDistance = 5.0f;
 	[SerializeField] private GameObject poof;
-	[SerializeField] [Range (0, 1)] private float m_CrouchSpeed = 0.25f;
+	[SerializeField] [Range(0, 1)] private float m_AirSpeed = 0.25f;
+	[SerializeField] [Range(0, 1)] private float m_CrouchSpeed = 0.25f;
 	[SerializeField] private LayerMask m_WhatIsGround;
 
 	#endregion
@@ -25,7 +26,6 @@ public class CharacterMovement : CharacterBase
 	private Transform m_CeilingCheck;
 	const float k_CeilingRadius = .01f;
 
-	private Animator m_Anim;
 	private Rigidbody2D m_Rigidbody2D;
 
 	private bool m_FacingRight = true;
@@ -36,8 +36,6 @@ public class CharacterMovement : CharacterBase
 	private bool m_Jump;
 	private bool m_JumpFinished;
 	private bool m_Dash;
-
-	private float m_JumpTimer = 0.0f;
 
 
 	#endregion
@@ -52,110 +50,118 @@ public class CharacterMovement : CharacterBase
 	#region Monobehaviours
 
 
-	private void Awake ()
+	private void Awake()
 	{
-		m_GroundCheck = transform.Find ("GroundCheck");
-		m_CeilingCheck = transform.Find ("CeilingCheck");
-		m_Anim = GetComponent<Animator> ();
-		m_Rigidbody2D = GetComponent<Rigidbody2D> ();
+		m_GroundCheck = transform.Find("GroundCheck");
+		m_CeilingCheck = transform.Find("CeilingCheck");
+		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 
-	private void FixedUpdate ()
+	private void FixedUpdate()
 	{
 		m_Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll (m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for ( int i = 0; i < colliders.Length; i++ )
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+		for (int i = 0; i < colliders.Length; i++)
 		{
-			if ( colliders[i].gameObject != gameObject )
+			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
 				break;
 			}
 
 		}
-		m_Anim.SetBool ("Ground", m_Grounded);
+		Anim.SetBool(CharacterAnimation.GROUNDED, m_Grounded);
 
-		m_Anim.SetFloat ("vSpeed", m_Rigidbody2D.velocity.y);
+		Anim.SetFloat(CharacterAnimation.VSPEED, m_Rigidbody2D.velocity.y);
 
-		HandleCrouch ();
-		HandleJump ();
-		HandleDash ();
-		Move ();
+		HandleCrouch();
+		HandleJump();
+		HandleDash();
+		Move();
 	}
 
 
 	#endregion
 
-	private void HandleCrouch ()
+	private void HandleCrouch()
 	{
-		if ( !m_Crouched && m_Anim.GetBool ("Crouch") )
+		if (!m_Crouched && Anim.GetBool(CharacterAnimation.CROUCHED))
 		{
 			// If the character has a ceiling preventing them from standing up, keep them crouching
-			if ( Physics2D.OverlapCircle (m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround) )
+			if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
 			{
 				m_Crouched = true;
 			}
 		}
 
 		// Set whether or not the character is crouching in the animator
-		m_Anim.SetBool ("Crouch", m_Crouched);
+		Anim.SetBool(CharacterAnimation.CROUCHED, m_Crouched);
 	}
 
 
-	private void Move ()
+	private void Move()
 	{
-		m_Input = ( m_Crouched ? m_Input * m_CrouchSpeed : m_Input );
-
-		m_Anim.SetFloat ("Speed", Mathf.Abs (m_Input));
-
-		m_Rigidbody2D.velocity = new Vector2 (m_Input * m_MoveSpeed, m_Rigidbody2D.velocity.y);
-
-		if ( m_Input > 0 && !m_FacingRight || m_Input < 0 && m_FacingRight )
+		if (!m_Grounded)
 		{
-			Flip ();
+		//	m_Input *= m_AirSpeed;
 		}
+		else if (m_Crouched)
+		{
+			m_Input *= m_CrouchSpeed;
+		}
+
+		Vector2 current = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right);
+		Vector2 input = Vector2.right * m_Input * m_MoveSpeed;
+
+		m_Rigidbody2D.AddForce(input - current, ForceMode2D.Impulse);
+
+		if (m_Input > 0 && !m_FacingRight || m_Input < 0 && m_FacingRight)
+		{
+			Flip();
+		}
+
+		Anim.SetFloat(CharacterAnimation.SPEED, Mathf.Abs(m_Input));
 	}
 
 
-	private void HandleDash ()
+	private void HandleDash()
 	{
-		if ( !m_Dash || m_Crouched )
+		if (!m_Dash || m_Crouched)
 			return;
 
-		m_Rigidbody2D.MovePosition (m_Rigidbody2D.position + Forward * m_DashDistance);
-		Instantiate (poof, m_Rigidbody2D.position, Quaternion.identity);
+		m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
+		Instantiate(poof, m_Rigidbody2D.position, Quaternion.identity);
 		m_Dash = false;
 	}
 
 
-	private void HandleJump ()
+	private void HandleJump()
 	{
-		if ( m_Jump )
+		if (m_Jump)
 		{
-			if ( m_Grounded && m_Anim.GetBool ("Ground") )
+			if (m_Grounded)
 			{
 				m_Grounded = false;
 				m_JumpFinished = false;
-				m_JumpTimer = 0;
-				m_Anim.SetBool ("Ground", false);
-				m_Rigidbody2D.AddForce (Vector2.up * m_JumpForce);
+				Anim.SetBool(CharacterAnimation.GROUNDED, false);
+				m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce);
 			}
 
 			m_Jump = false;
 		}
-		else if ( !m_Grounded )
+		else if (!m_Grounded)
 		{
 			float force = m_JumpFinished ? m_JumpFinishedCounterForce : m_JumpCounterForce;
-			m_Rigidbody2D.AddForce (Vector3.down * force);
+			m_Rigidbody2D.AddForce(Vector3.down * force);
 		}
 	}
 
 
-	private void Flip ()
+	private void Flip()
 	{
 		m_FacingRight = !m_FacingRight;
 
@@ -167,31 +173,31 @@ public class CharacterMovement : CharacterBase
 
 	#region Exposed Methods
 
-	public void ProvideInput (float input)
+	public void ProvideInput(float input)
 	{
 		m_Input = input;
 	}
 
 
-	public void SetCrouch (bool crouched)
+	public void SetCrouch(bool crouched)
 	{
 		this.m_Crouched = crouched;
 	}
 
 
-	public void Dash ()
+	public void Dash()
 	{
-		m_Dash = Inventory?.Contains (x => x.Name == "Boots of Passion") ?? false;
+		m_Dash = Inventory?.Contains(x => x.Name == "Boots of Passion") ?? false;
 	}
 
 
-	public void StartJump ()
+	public void StartJump()
 	{
 		m_Jump = true;
 	}
 
 
-	public void FinishJump ()
+	public void FinishJump()
 	{
 		m_JumpFinished = true;
 	}

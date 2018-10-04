@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Entity))]
+[RequireComponent(typeof(Health))]
 public class Character : CharacterBase
 {
     public static Character Current

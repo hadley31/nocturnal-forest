@@ -268,6 +268,7 @@ MonoBehaviour:
   m_JumpFinishedCounterForce: 30
   m_DashDistance: 5
   poof: {fileID: 1455377786394370, guid: 90f85bc883d451946ab02b54b912a7bc, type: 2}
+  m_AirSpeed: 0.25
   m_CrouchSpeed: 0.25
   m_WhatIsGround:
     serializedVersion: 2

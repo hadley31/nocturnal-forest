@@ -2,15 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 public class CharacterAnimation : CharacterBase
 {
-	private Animator m_Animator;
+    public const string GROUNDED = "Ground", SPEED = "Speed", VSPEED = "vSpeed", CROUCHED = "Crouch";
 
-	private void Awake ()
-	{
-		m_Animator = GetComponent<Animator> ();
-	}
+    private Animator m_Animator;
 
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
 
+    public void SetBool(string key, bool value)
+    {
+        m_Animator.SetBool(key, value);
+    }
+
+    public bool GetBool(string key)
+    {
+        return m_Animator.GetBool(key);
+    }
+
+    public void SetFloat(string key, float value)
+    {
+        m_Animator.SetFloat(key, value);
+    }
+
+    public float GetFloat(string key)
+    {
+        return m_Animator.GetFloat(key);
+    }
 }
