@@ -481,21 +481,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 58952403820431756, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
-    - target: {fileID: 61296561197645612, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 279
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed742ec5f3407b4f9d2092fe035a26e, type: 2}
   m_IsPrefabAsset: 0
@@ -711,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 6138aed65a46c68479cd77db828468c4, type: 2}
-  timeToCompleteCycle: 20
+  timeToCompleteCycle: 100
   transitionTime: 5
 --- !u!114 &1740771714
 MonoBehaviour:
@@ -761,7 +746,7 @@ GameObject:
   - component: {fileID: 1757680164}
   - component: {fileID: 1757680166}
   - component: {fileID: 1757680168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: End trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
