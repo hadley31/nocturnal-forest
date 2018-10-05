@@ -4,33 +4,61 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-	public string Name;
-	public int ID;
-	public string Desc;
-	public string Type;
-	public bool consumable;
-	public Sprite Sprite;
+    #region Fields exposed in inspector
+    [SerializeField] private int m_ID;
+    [SerializeField] private string m_Desc;
+    [SerializeField] private string m_Type;
+    [SerializeField] private bool m_Consumable;
+    [SerializeField] private Sprite m_Sprite;
+    [SerializeField] private int m_MaxInInventory;
 
-	public Item (int id, string name, string desc, string type)
-	{
-		this.ID = id;
-		this.Name = name;
-		this.Desc = desc;
-		this.Type = type;
-	}
+    #endregion
 
-	public override bool Equals (object obj)
-	{
-		return obj is Item && ( (Item) obj ).ID == this.ID;
-	}
+    #region Properties
 
-	public override int GetHashCode ()
-	{
-		return base.GetHashCode ();
-	}
+    public string Name
+    {
+        get { return name; }
+    }
+    public int ID
+    {
+        get { return m_ID; }
+    }
+    public string Desc
+    {
+        get { return m_Desc; }
+    }
+    public string Type
+    {
+        get { return m_Type; }
+    }
+    public bool Consumable
+    {
+        get { return m_Consumable; }
+    }
+    public Sprite Sprite
+    {
+        get { return m_Sprite; }
+    }
+    public int MaxInInventory
+    {
+        get { return m_MaxInInventory; }
+    }
 
-	public override string ToString ()
-	{
-		return $"Item [id:{ID},name:{Name},type:{Type}";
-	}
+    #endregion
+
+    public override bool Equals(object obj)
+    {
+        return obj is Item && ((Item)obj).ID == this.ID;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return $"Item [id:{ID},name:{Name},type:{Type}";
+    }
 }

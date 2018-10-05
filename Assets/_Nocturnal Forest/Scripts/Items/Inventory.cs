@@ -5,27 +5,42 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
-	public List<Item> items;
-	public UnityEvent onChanged;
+    public List<Item> items;
+    public UnityEvent onChanged;
 
-	public void Add (Item item)
-	{
-		if (items == null )
-		{
-			items = new List<Item> ();
-		}
+    public void Add(Item item)
+    {
+        if (item == null)
+        {
+            return;
+        }
 
-		items.Add (item);
-		onChanged.Invoke ();
-	}
+        if (items == null)
+        {
+            items = new List<Item>();
+        }
 
-	public bool Remove (System.Predicate<Item> predicate)
-	{
-		return items?.Remove (items.Find (predicate)) ?? false;
-	}
+        items.Add(item);
+        onChanged.Invoke();
+    }
 
-	public bool Contains (System.Predicate<Item> predicate)
-	{
-		return items?.Exists (predicate) ?? false;
-	}
+    public bool RemoveFirst(int id)
+    {
+        return items?.Remove(items.Find(x => x.ID == id)) ?? false;
+    }
+
+    public bool RemoveLast(int id)
+    {
+        return items?.Remove(items.FindLast(x => x.ID == id)) ?? false;
+    }
+
+    public bool RemoveAll(System.Predicate<Item> predicate)
+    {
+        return items.RemoveAll(predicate) > 0;
+    }
+
+    public bool Contains(System.Predicate<Item> predicate)
+    {
+        return items?.Exists(predicate) ?? false;
+    }
 }

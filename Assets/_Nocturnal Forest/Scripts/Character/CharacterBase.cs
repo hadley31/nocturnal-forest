@@ -9,9 +9,9 @@ public abstract class CharacterBase : MonoBehaviour
 	{
 		get
 		{
-			if (m_Inventory == null )
+			if (m_Inventory == null)
 			{
-				m_Inventory = GetComponent<Inventory> ();
+				m_Inventory = GetComponent<Inventory>();
 			}
 			return m_Inventory;
 		}
@@ -22,9 +22,9 @@ public abstract class CharacterBase : MonoBehaviour
 	{
 		get
 		{
-			if ( m_PlayerInput == null )
+			if (m_PlayerInput == null)
 			{
-				m_PlayerInput = GetComponent<CharacterInput> ();
+				m_PlayerInput = GetComponent<CharacterInput>();
 			}
 			return m_PlayerInput;
 		}
@@ -35,9 +35,9 @@ public abstract class CharacterBase : MonoBehaviour
 	{
 		get
 		{
-			if (m_Movement == null )
+			if (m_Movement == null)
 			{
-				m_Movement = GetComponent<CharacterMovement> ();
+				m_Movement = GetComponent<CharacterMovement>();
 			}
 			return m_Movement;
 		}
@@ -48,9 +48,9 @@ public abstract class CharacterBase : MonoBehaviour
 	{
 		get
 		{
-			if (m_Animation == null )
+			if (m_Animation == null)
 			{
-				m_Animation = GetComponent<CharacterAnimation> ();
+				m_Animation = GetComponent<CharacterAnimation>();
 			}
 			return m_Animation;
 		}

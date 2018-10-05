@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PostEffectStuff : MonoBehaviour {
+public class PostEffectStuff : MonoBehaviour
+{
 
     public Material mat;
 
@@ -15,7 +16,7 @@ public class PostEffectStuff : MonoBehaviour {
     private float currentBlend = 0.0f;
     private float timePassed = 0.0f;
 
-    void OnRenderImage( RenderTexture src, RenderTexture dest)
+    void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         if (timePassed > (timeToCompleteCycle / 2.0))
         {
@@ -23,11 +24,11 @@ public class PostEffectStuff : MonoBehaviour {
             float incAmount = Time.deltaTime / (transitionTime / 2.0f);
             float incAmount2 = Time.deltaTime / (transitionTime);
 
-            if (currentBlend <= 2.0f && isNight==false)
+            if (currentBlend <= 2.0f && isNight == false)
             {
                 currentBlend += incAmount;
             }
-            else if (currentBlend<=3.0f && isNight==true)
+            else if (currentBlend <= 3.0f && isNight == true)
             {
                 currentBlend += incAmount2;
             }
