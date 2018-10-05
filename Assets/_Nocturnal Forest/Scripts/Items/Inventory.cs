@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         {
             return;
         }
-		
+
         if (items == null)
         {
             items = new List<Item>();
@@ -24,9 +24,19 @@ public class Inventory : MonoBehaviour
         onChanged.Invoke();
     }
 
-    public bool Remove(System.Predicate<Item> predicate)
+    public bool RemoveFirst(int id)
     {
-        return items?.Remove(items.Find(predicate)) ?? false;
+        return items?.Remove(items.Find(x => x.ID == id)) ?? false;
+    }
+
+    public bool RemoveLast(int id)
+    {
+        return items?.Remove(items.FindLast(x => x.ID == id)) ?? false;
+    }
+
+    public bool RemoveAll(System.Predicate<Item> predicate)
+    {
+        return items.RemoveAll(predicate) > 0;
     }
 
     public bool Contains(System.Predicate<Item> predicate)
