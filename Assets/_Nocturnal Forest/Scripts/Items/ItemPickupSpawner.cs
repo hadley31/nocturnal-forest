@@ -8,33 +8,56 @@ public class ItemPickupSpawner : MonoBehaviour
 	public List<Item> items;
 	public bool spawnOnStart = false;
 	public bool addRandomForce = true;
-	public float randomForceMagnitude = 25f;
+	public float randomForceMagnitude = 5f;
 
-	private void Start ()
+	private void Start()
 	{
-		if ( spawnOnStart )
+		if (spawnOnStart)
 		{
-			Spawn ();
+			DropAll();
 		}
 	}
 
-	public void Spawn ()
+	public void DropAll()
 	{
-		Spawn (transform.position);
+		DropAll(transform.position);
 	}
 
-	public void Spawn (Vector3 position)
+	public void DropAll(Vector3 position)
 	{
-		foreach ( Item item in items )
+		foreach (Item i in items)
 		{
-			ItemPickup pickup = Instantiate (pickupPrefab, position, Quaternion.identity);
-			pickup.Prime (item);
+			Spawn(i, position);
+		}
+	}
 
-			if ( addRandomForce )
-			{
-				Vector2 force = (Vector2.up + Vector2.right * Random.Range (-1.0f, 1.0f)).normalized * randomForceMagnitude;
-				pickup.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Force);
-			}
+	public void DropOne()
+	{
+		DropOne(transform.position);
+	}
+
+	public void DropOne(Vector3 position)
+	{
+		if (items != null && items.Count > 0)
+		{
+			Spawn(items[Random.Range(0, items.Count)], position);
+		}
+	}
+
+	private void Spawn(Item item, Vector2 position)
+	{
+		if (item == null)
+		{
+			return;
+		}
+
+		ItemPickup pickup = Instantiate(pickupPrefab, position, Quaternion.identity);
+		pickup.Prime(item);
+
+		if (addRandomForce)
+		{
+			Vector2 force = (Vector2.up + Vector2.right * Random.Range(-1.0f, 1.0f)).normalized * randomForceMagnitude;
+			pickup.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
 		}
 	}
 }

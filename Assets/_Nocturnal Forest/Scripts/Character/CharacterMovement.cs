@@ -6,14 +6,15 @@ public class CharacterMovement : CharacterBase
 {
 	#region Exposed Fields
 
-	[SerializeField] private float m_MoveSpeed = 10f;
+	[SerializeField] private float m_MoveAccel = 10f;
+	[SerializeField] private float m_MaxSpeed = 10f;
 	[SerializeField] private float m_JumpForce = 550f;
 	[SerializeField] private float m_JumpCounterForce = 10;
 	[SerializeField] private float m_JumpFinishedCounterForce = 30f;
 	[SerializeField] private float m_DashDistance = 5.0f;
-	[SerializeField] private GameObject poof;
-	[SerializeField] [Range(0, 1)] private float m_AirSpeed = 0.25f;
-	[SerializeField] [Range(0, 1)] private float m_CrouchSpeed = 0.25f;
+	[SerializeField] private GameObject m_Poof;
+	[SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
+	[SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
 	[SerializeField] private LayerMask m_WhatIsGround;
 
 	#endregion
@@ -30,6 +31,7 @@ public class CharacterMovement : CharacterBase
 
 	private bool m_FacingRight = true;
 
+	private float m_DesiredInput;
 	private float m_Input;
 	private bool m_Grounded;
 	private bool m_Crouched;
@@ -78,6 +80,18 @@ public class CharacterMovement : CharacterBase
 
 		Anim.SetFloat(CharacterAnimation.VSPEED, m_Rigidbody2D.velocity.y);
 
+		float accel = m_MoveAccel;
+		if (!m_Grounded)
+		{
+			accel *= m_AirMultiplier;
+		}
+		else if (m_Crouched)
+		{
+			accel *= m_CrouchMultiplier;
+		}
+
+		m_Input = Mathf.Lerp(m_Input, m_DesiredInput, Time.deltaTime * accel);
+
 		HandleCrouch();
 		HandleJump();
 		HandleDash();
@@ -105,17 +119,8 @@ public class CharacterMovement : CharacterBase
 
 	private void Move()
 	{
-		if (!m_Grounded)
-		{
-		//	m_Input *= m_AirSpeed;
-		}
-		else if (m_Crouched)
-		{
-			m_Input *= m_CrouchSpeed;
-		}
-
 		Vector2 current = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right);
-		Vector2 input = Vector2.right * m_Input * m_MoveSpeed;
+		Vector2 input = Vector2.right * m_Input * m_MaxSpeed;
 
 		m_Rigidbody2D.AddForce(input - current, ForceMode2D.Impulse);
 
@@ -134,7 +139,7 @@ public class CharacterMovement : CharacterBase
 			return;
 
 		m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
-		Instantiate(poof, m_Rigidbody2D.position, Quaternion.identity);
+		Instantiate(m_Poof, m_Rigidbody2D.position, Quaternion.identity);
 		m_Dash = false;
 	}
 
@@ -175,7 +180,7 @@ public class CharacterMovement : CharacterBase
 
 	public void ProvideInput(float input)
 	{
-		m_Input = input;
+		m_DesiredInput = input;
 	}
 
 

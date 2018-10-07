@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4432979063026114}
   - component: {fileID: 114802886979103556}
+  - component: {fileID: 114097652422966298}
+  - component: {fileID: 114360703263994164}
   m_Layer: 0
   m_Name: Boots of Passion
   m_TagString: Untagged
@@ -40,6 +42,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114097652422966298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687904285803718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138aee8584729034898b54d18a1da2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Stat: Speed
+  m_Amount: 2
+--- !u!114 &114360703263994164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687904285803718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138aee8584729034898b54d18a1da2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Stat: Health
+  m_Amount: 100
 --- !u!114 &114802886979103556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,7 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bbcf6ed0b82f946979272f58fb6086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: Boots of Passion
   m_ID: 1
   m_Desc: Gives the character the ability to dash
   m_Type: Wearable
