@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bbcf6ed0b82f946979272f58fb6086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Special Key
-  ID: 420
-  Desc: Get into secret places
-  Type: 
-  consumable: 0
-  Sprite: {fileID: 21300000, guid: a6251cc64f2f0894cb4bb85fd120a915, type: 3}
+  m_ID: 1
+  m_Desc: Grants character access to secret places
+  m_Type: 
+  m_Consumable: 1
+  m_Sprite: {fileID: 0}
+  m_MaxInInventory: 1
