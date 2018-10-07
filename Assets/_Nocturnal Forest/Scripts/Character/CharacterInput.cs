@@ -11,7 +11,7 @@ public class CharacterInput : CharacterBase
 		HandleJumpInput ();
 		HandleDashInput ();
 
-		float input = Input.GetAxis ("Horizontal");
+		float input = Input.GetAxisRaw ("Horizontal");
 		Movement.ProvideInput (input);
 	}
 
