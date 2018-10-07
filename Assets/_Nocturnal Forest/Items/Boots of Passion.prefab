@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4432979063026114}
   - component: {fileID: 114802886979103556}
   - component: {fileID: 114097652422966298}
-  - component: {fileID: 114360703263994164}
   m_Layer: 0
   m_Name: Boots of Passion
   m_TagString: Untagged
@@ -55,19 +54,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Stat: Speed
   m_Amount: 2
---- !u!114 &114360703263994164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687904285803718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 138aee8584729034898b54d18a1da2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Stat: Health
-  m_Amount: 100
 --- !u!114 &114802886979103556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,4 +70,4 @@ MonoBehaviour:
   m_Type: Wearable
   m_Consumable: 0
   m_Sprite: {fileID: 21300000, guid: e615c88a16875534587befa5b2b64ae7, type: 3}
-  m_MaxInInventory: 1
+  m_MaxInInventory: 0
