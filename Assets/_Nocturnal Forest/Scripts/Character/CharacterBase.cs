@@ -2,57 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterBase : MonoBehaviour
+public abstract class CharacterBase : EntityBase
 {
-	private Inventory m_Inventory;
-	public Inventory Inventory
-	{
-		get
-		{
-			if (m_Inventory == null)
-			{
-				m_Inventory = GetComponent<Inventory>();
-			}
-			return m_Inventory;
-		}
-	}
+    private Inventory m_Inventory;
+    public Inventory Inventory
+    {
+        get
+        {
+            if (m_Inventory == null)
+            {
+                m_Inventory = GetComponent<Inventory>();
+            }
+            return m_Inventory;
+        }
+    }
 
-	private CharacterInput m_PlayerInput;
-	public CharacterInput PlayerInput
-	{
-		get
-		{
-			if (m_PlayerInput == null)
-			{
-				m_PlayerInput = GetComponent<CharacterInput>();
-			}
-			return m_PlayerInput;
-		}
-	}
+    private CharacterInput m_PlayerInput;
+    public CharacterInput PlayerInput
+    {
+        get
+        {
+            if (m_PlayerInput == null)
+            {
+                m_PlayerInput = GetComponent<CharacterInput>();
+            }
+            return m_PlayerInput;
+        }
+    }
 
-	private CharacterMovement m_Movement;
-	public CharacterMovement Movement
-	{
-		get
-		{
-			if (m_Movement == null)
-			{
-				m_Movement = GetComponent<CharacterMovement>();
-			}
-			return m_Movement;
-		}
-	}
+    private CharacterMovement m_Movement;
+    public CharacterMovement Movement
+    {
+        get
+        {
+            if (m_Movement == null)
+            {
+                m_Movement = GetComponent<CharacterMovement>();
+            }
+            return m_Movement;
+        }
+    }
 
-	private CharacterAnimation m_Animation;
-	public CharacterAnimation Anim
-	{
-		get
-		{
-			if (m_Animation == null)
-			{
-				m_Animation = GetComponent<CharacterAnimation>();
-			}
-			return m_Animation;
-		}
-	}
+    private CharacterCombat m_Combat;
+    public CharacterCombat Combat
+    {
+        get
+        {
+            if (m_Combat == null)
+            {
+                m_Combat = GetComponent<CharacterCombat>();
+            }
+            return m_Combat;
+        }
+    }
+
+    private CharacterAnimation m_Animation;
+    public CharacterAnimation Anim
+    {
+        get
+        {
+            if (m_Animation == null)
+            {
+                m_Animation = GetComponent<CharacterAnimation>();
+            }
+            return m_Animation;
+        }
+    }
 }

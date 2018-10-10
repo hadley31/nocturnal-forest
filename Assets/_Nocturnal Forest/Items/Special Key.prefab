@@ -55,5 +55,5 @@ MonoBehaviour:
   m_Desc: Grants character access to secret places
   m_Type: 
   m_Consumable: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300006, guid: 687630fff4f67d742a879adbb5376f57, type: 3}
   m_MaxInInventory: 1

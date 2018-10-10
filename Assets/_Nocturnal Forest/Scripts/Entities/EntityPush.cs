@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityPush : EntityBase
+public class EntityPush : TriggerBase
 {
 	public Vector2 push;
 

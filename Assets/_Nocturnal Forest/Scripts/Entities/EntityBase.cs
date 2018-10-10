@@ -33,19 +33,4 @@ public class EntityBase : MonoBehaviour
 			return m_Health;
 		}
 	}
-
-	private Trigger m_Trigger;
-
-	public Trigger Trigger
-	{
-		get
-		{
-			if ( m_Trigger == null )
-			{
-				m_Trigger = GetComponent<Trigger> ();
-			}
-
-			return m_Trigger;
-		}
-	}
 }
