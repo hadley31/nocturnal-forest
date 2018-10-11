@@ -19,6 +19,20 @@ public class PathNodeEditor : Editor
 			newNode.AddConnection(node);
 			newNode.name = node.name;
 
+			newNode.transform.SetParent (node.transform.parent);
+
+			Selection.activeGameObject = newNode.gameObject;
+		}
+
+		if (GUILayout.Button("Create New"))
+		{
+			PathNode newNode = Instantiate(node);
+
+			newNode.ClearConnections();
+			newNode.name = node.name;
+
+			newNode.transform.SetParent (node.transform.parent);
+
 			Selection.activeGameObject = newNode.gameObject;
 		}
 

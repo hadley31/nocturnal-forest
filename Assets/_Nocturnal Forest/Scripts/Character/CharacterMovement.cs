@@ -15,7 +15,7 @@ public class CharacterMovement : CharacterBase
 	[SerializeField] private float m_DashDistance = 3.0f;
 	[SerializeField] private float m_DashCooldown = 5.0f;
 	[SerializeField] private GameObject m_Poof;
-    [SerializeField] private AudioClip whoosh;
+	[SerializeField] private AudioClip whoosh;
 	[SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
 	[SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
 	[SerializeField] private LayerMask m_WhatIsGround;
@@ -75,11 +75,13 @@ public class CharacterMovement : CharacterBase
 
 		HandleInput();
 
-		HandleCrouch();
+		//HandleCrouch();
 		HandleJump();
 		HandleDash();
 
 		Move();
+
+		print(m_Grounded);
 	}
 
 
@@ -168,7 +170,7 @@ public class CharacterMovement : CharacterBase
 		m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
 		Instantiate(m_Poof, m_Rigidbody2D.position, Quaternion.identity);
 
-        Universe.PlaySound(whoosh, 0.1f);
+		Universe.PlaySound(whoosh, 0.1f);
 
 		m_NextDashTime = Time.time + m_DashCooldown;
 		m_Dash = false;
@@ -197,7 +199,7 @@ public class CharacterMovement : CharacterBase
 		else
 		{
 			// Here we are on the ground and not jumping so we add "stick to ground" force
-			
+			m_Rigidbody2D.AddForce(Vector2.down * 100);
 		}
 	}
 
@@ -222,7 +224,7 @@ public class CharacterMovement : CharacterBase
 
 	public void SetCrouch(bool crouched)
 	{
-		this.m_Crouched = crouched;
+		//this.m_Crouched = crouched;
 	}
 
 

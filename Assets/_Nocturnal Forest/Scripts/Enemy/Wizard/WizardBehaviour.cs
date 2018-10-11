@@ -41,7 +41,7 @@ public class WizardBehaviour : EnemyBase
 			return;
 		}
 
-		if (Character.Current == null)
+		if (Character.Current == null || Vector2.Distance(Character.Current.transform.position, transform.position) > 25f)
 		{
 			return;
 		}
@@ -61,11 +61,14 @@ public class WizardBehaviour : EnemyBase
 
 		m_NextAllowedWarpTime = Time.time + warpCooldownTime;
 
-		List<PathNode> locations = FindObjectsOfType<PathNode>().Where(x => Vector2.SqrMagnitude(transform.position - x.transform.position) > maxWarpDistance * maxWarpDistance).ToList();
+		List<PathNode> locations = FindObjectsOfType<PathNode>().Where(x => Vector2.SqrMagnitude(transform.position - x.transform.position) < maxWarpDistance * maxWarpDistance).ToList();
 
 		PathNode node = locations.PickRandom();
 
+		if (node == null) { return; }
+
 		transform.position = node.transform.position;
 		Agent.SetDestination(null);
+		Agent.SetCurrentToClosest();
 	}
 }

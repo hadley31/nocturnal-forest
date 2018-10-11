@@ -19,7 +19,7 @@ public class PathAgent : MonoBehaviour
 		SetCurrentToClosest();
 	}
 
-	private void SetCurrentToClosest()
+	public void SetCurrentToClosest()
 	{
 		PathNode closest = null;
 		float dist = Mathf.Infinity;

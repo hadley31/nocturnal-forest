@@ -21,6 +21,8 @@ public class PathNode : MonoBehaviour
 
 			Gizmos.DrawLine(transform.position + Vector3.up * offset, node.transform.position + Vector3.up * offset);
 		}
+		Gizmos.color = Color.blue;
+		Gizmos.DrawSphere(transform.position, 0.2f);
 	}
 
 	public void ClearConnections()
