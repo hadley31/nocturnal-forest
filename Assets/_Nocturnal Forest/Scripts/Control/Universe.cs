@@ -92,15 +92,15 @@ public sealed class Universe : MonoBehaviour
         }
     }
 
-    public static void PlaySound(AudioClip clip)
+    public static void PlaySound(AudioClip clip, float volume = 1f)
     {
         if (Instance?.AudioSource != null)
         {
-            Instance.AudioSource.PlayOneShot(clip);
+            Instance.AudioSource.PlayOneShot(clip, Mathf.Clamp01(volume));
         }
 		else
 		{
-			Debug.LogWarning("There is no audiosource on the Universe object!");
+			Debug.LogWarning("There is no Universal AudioSource!");
 		}
     }
 

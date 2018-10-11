@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Health))]
 public class Character : CharacterBase
@@ -10,6 +11,9 @@ public class Character : CharacterBase
         get;
         private set;
     }
+
+    public UnityEvent onSpawn;
+    public UnityEvent onDie;
 
     private void OnEnable()
     {
@@ -32,7 +36,15 @@ public class Character : CharacterBase
         ItemPickup pickup = collision.GetComponent<ItemPickup>();
         if (pickup != null)
         {
-            pickup.Pickup(Inventory);
+            pickup.Pickup(this.Inventory);
         }
+    }
+
+    public void Spawn(){
+        onSpawn.Invoke();
+    }
+
+    public void Die(){
+        onDie.Invoke();
     }
 }

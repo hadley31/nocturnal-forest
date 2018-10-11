@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114154623849055710}
   - component: {fileID: 114721487230567988}
   - component: {fileID: 114049220979474568}
+  - component: {fileID: 114522803641633774}
   - component: {fileID: 212056904437138192}
   - component: {fileID: 95059734811772656}
   - component: {fileID: 50918503441368374}
@@ -107,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832209273380430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4291398907323856}
@@ -120,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743705017696274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6034732, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4291398907323856}
@@ -173,7 +174,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.5
 --- !u!70 &70934035717933602
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -186,8 +187,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.12}
-  m_Size: {x: 0.24, y: 1}
+  m_Offset: {x: 0.01, y: -0.15}
+  m_Size: {x: 0.31, y: 0.69}
   m_Direction: 0
 --- !u!95 &95059734811772656
 Animator:
@@ -198,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 1064791932793950}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fc43f0c4b413534ba12c51c0e5e5f6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 098a774d60695e548a154f41b4997b61, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
@@ -227,7 +228,18 @@ MonoBehaviour:
       PublicKeyToken=null
   onDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114563335209189854}
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114154623849055710
@@ -263,18 +275,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06951a657392d464d8e6a56fbd52d055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveAccel: 8
-  m_MaxSpeed: 10
-  m_JumpForce: 550
-  m_JumpCounterForce: 10
-  m_JumpFinishedCounterForce: 30
-  m_DashDistance: 5
+  m_MoveAccel: 5
+  m_MoveDeaccel: 20
+  m_MaxSpeed: 7
+  m_JumpForce: 450
+  m_JumpCounterForce: 400
+  m_JumpFinishedCounterForce: 1500
+  m_DashDistance: 3
+  m_DashCooldown: 5
   m_Poof: {fileID: 1455377786394370, guid: 90f85bc883d451946ab02b54b912a7bc, type: 2}
+  whoosh: {fileID: 8300000, guid: a21d8debfdc1de14ebc48abeb01fb6a8, type: 3}
   m_AirMultiplier: 0.5
   m_CrouchMultiplier: 0.25
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 6416
+--- !u!114 &114522803641633774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064791932793950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0ab9c3e4c44c3428f16e6068befdfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 114049220979474568}
+  amount: 1
+  rate: 1
 --- !u!114 &114563335209189854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,6 +315,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48fd6fd1ba52324486439951cf0c67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114049220979474568}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114721487230567988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseAttackDamage: 8
-  baseAttackSpeed: 2
+  baseAttackSpeed: 3
   baseAttackDistance: 1
 --- !u!114 &114923402349670220
 MonoBehaviour:
@@ -364,7 +414,7 @@ SpriteRenderer:
   m_SortingLayerID: -1783731295
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8fb98a6035269e64a998f9b56828fc4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4112a36e1645b2d45bcc52d419bea47f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

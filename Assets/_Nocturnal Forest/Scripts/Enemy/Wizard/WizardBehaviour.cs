@@ -6,7 +6,7 @@ public class WizardBehaviour : EnemyBase
 {
 	[Header("Warp")]
 	public float maxWarpDistance = 15.0f;
-	public float warpCooldownTime = 5.0f;
+	public float warpCooldownTime = 10.0f;
 
 	private float m_NextAllowedWarpTime;
 
@@ -22,6 +22,6 @@ public class WizardBehaviour : EnemyBase
 			return;
 		}
 
-		
+
 	}
 }

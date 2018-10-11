@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof (Entity))]
+[RequireComponent(typeof(Entity))]
 public class Health : EntityBase
 {
 	[SerializeField]
@@ -31,13 +31,18 @@ public class Health : EntityBase
 		}
 		private set
 		{
-			m_health = Mathf.Clamp (value, 0, m_MaxHealth);
-			onHealthChanged.Invoke (m_health);
-			if ( m_health <= 0 )
+			m_health = Mathf.Clamp(value, 0, m_MaxHealth);
+			onHealthChanged.Invoke(m_health);
+			if (m_health <= 0)
 			{
-				Die ();
+				Die();
 			}
 		}
+	}
+
+	public virtual float Percent
+	{
+		get { return ((float)m_health) / m_MaxHealth; }
 	}
 
 	public virtual bool GodMode
@@ -46,42 +51,42 @@ public class Health : EntityBase
 		private set { m_GodMode = value; }
 	}
 
-	protected virtual void Start ()
+	protected virtual void Start()
 	{
-		SetValueToMax ();
+		SetValueToMax();
 	}
-	
-	public virtual void SetValue (int value)
+
+	public virtual void SetValue(int value)
 	{
 		Value = value;
 	}
-	public virtual void Decrease (int amount)
+	public virtual void Decrease(int amount)
 	{
-		SetValue (Value - amount);
+		SetValue(Value - amount);
 	}
-	
-	public virtual void SetValueToMax ()
+
+	public virtual void SetValueToMax()
 	{
-		SetValue (m_MaxHealth);
+		SetValue(m_MaxHealth);
 	}
-	
-	public virtual void SetMaxValue (int maxValue, bool setValueToMax = false)
+
+	public virtual void SetMaxValue(int maxValue, bool setValueToMax = false)
 	{
 		Max = maxValue;
 
-		if ( setValueToMax )
+		if (setValueToMax)
 		{
 			Value = Max;
 		}
 	}
 
-	protected virtual void Die ()
+	protected virtual void Die()
 	{
-		onDie.Invoke ();
+		onDie.Invoke();
 	}
 
-	public virtual void Destroy ()
+	public virtual void Destroy()
 	{
-		Destroy (gameObject);
+		Destroy(gameObject);
 	}
 }
