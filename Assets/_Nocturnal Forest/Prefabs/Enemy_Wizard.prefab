@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4563877834222460}
   - component: {fileID: 114753393585308418}
   - component: {fileID: 114609256607877420}
+  - component: {fileID: 114512331063620364}
   - component: {fileID: 114186420998254896}
   - component: {fileID: 114900676062105116}
   - component: {fileID: 212621479298731674}
@@ -205,6 +206,19 @@ MonoBehaviour:
   spawnOnStart: 0
   addRandomForce: 1
   randomForceMagnitude: 5
+--- !u!114 &114512331063620364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678142133089200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09efeaaeabefb6c4797f6546afa124bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxWarpDistance: 15
+  warpCooldownTime: 5
 --- !u!114 &114609256607877420
 MonoBehaviour:
   m_ObjectHideFlags: 1
