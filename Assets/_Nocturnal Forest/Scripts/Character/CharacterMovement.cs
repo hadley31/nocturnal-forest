@@ -16,6 +16,8 @@ public class CharacterMovement : CharacterBase
     [SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
     [SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
     [SerializeField] private LayerMask m_WhatIsGround;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private GameObject xpBar;
 
     #endregion
 
@@ -102,6 +104,18 @@ public class CharacterMovement : CharacterBase
         HandleJump();
         HandleDash();
         Move();
+
+        //HealthStuff
+        float healthPercent = (float)Health.Value / (float)Health.Max;
+        float xpPercent = 0f;
+
+        Vector3 temp = healthBar.transform.localScale;
+        temp.x = healthPercent;
+        healthBar.transform.localScale = temp;
+
+        temp = xpBar.transform.localScale;
+        temp.x = xpPercent;
+        xpBar.transform.localScale = temp;
     }
 
 
@@ -119,7 +133,7 @@ public class CharacterMovement : CharacterBase
         {
             Flip();
         }
-
+        
         Anim.SetFloat(CharacterAnimation.SPEED, Mathf.Abs(m_Input));
     }
 
