@@ -3,35 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof (Entity))]
-public class Enemy : MonoBehaviour
+[RequireComponent(typeof(Entity))]
+public class Enemy : EnemyBase
 {
-	public readonly List<Enemy> All = new List<Enemy> ();
+	public readonly List<Enemy> All = new List<Enemy>();
 
-	private void OnEnable ()
+	public UnityEvent onDie;
+
+	private void OnEnable()
 	{
-		if ( !All.Contains (this) )
+		if (!All.Contains(this))
 		{
-			All.Add (this);
+			All.Add(this);
 		}
 	}
 
-	private void OnDisable ()
+	private void OnDisable()
 	{
-		All.Remove (this);
+		All.Remove(this);
 	}
 
-	public void OnCollisionEnter2D (Collision2D collision)
+	public void OnCollisionEnter2D(Collision2D collision)
 	{
-		Character c = collision.collider.GetComponentInParent<Character> ();
+		Character c = collision.collider.GetComponentInParent<Character>();
 
-		if ( c != null )
+		if (c != null)
 		{
 			Vector2 offset = collision.rigidbody.position - collision.otherRigidbody.position;
-			if ( Vector2.Dot (offset, Vector2.up) > 0.85f )
+			if (Vector2.Dot(offset, Vector2.up) > 0.85f)
 			{
-				GetComponent<Health> ().SetValue (0);
+				GetComponent<Health>().SetValue(0);
 			}
 		}
+	}
+
+	public void Die()
+	{
+		onDie.Invoke();
 	}
 }

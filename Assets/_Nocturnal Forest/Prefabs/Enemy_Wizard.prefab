@@ -29,9 +29,10 @@ GameObject:
   - component: {fileID: 50038405159232686}
   - component: {fileID: 61261989184813452}
   - component: {fileID: 114205679572310848}
+  - component: {fileID: 114803249588606340}
   m_Layer: 12
   m_Name: Enemy_Wizard
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678142133089200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.34, y: 3.59, z: 0}
+  m_LocalPosition: {x: -4.94, y: 3.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 1678142133089200}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fc43f0c4b413534ba12c51c0e5e5f6f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
@@ -159,35 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c29c3d4c83c842a5ec769b78308e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114753393585308418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1678142133089200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57991c100806ca7469299219c3b09932, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114900676062105116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1678142133089200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f75f9e91f13f5f4ab7ee942770a1050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MaxHealth: 20
-  m_GodMode: 0
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: IntUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   onDie:
     m_PersistentCalls:
       m_Calls:
@@ -215,6 +187,62 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114753393585308418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678142133089200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57991c100806ca7469299219c3b09932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114803249588606340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678142133089200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd5dcdbd07ea1640a881b4ad14b272a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114900676062105116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678142133089200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f75f9e91f13f5f4ab7ee942770a1050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxHealth: 20
+  m_GodMode: 0
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: IntUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114609256607877420}
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114909217557856842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,8 +254,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09efeaaeabefb6c4797f6546afa124bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ProjectilePrefab: {fileID: 114561370255610684, guid: 54188a1be96810b4a95d4f992475cda7,
+    type: 2}
+  m_ShootSpeed: 0.5
   maxWarpDistance: 15
-  warpCooldownTime: 5
+  warpCooldownTime: 10
 --- !u!212 &212621479298731674
 SpriteRenderer:
   m_ObjectHideFlags: 1
