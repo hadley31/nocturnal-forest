@@ -80,8 +80,6 @@ public class CharacterMovement : CharacterBase
 		HandleDash();
 
 		Move();
-
-		print(m_Grounded);
 	}
 
 
