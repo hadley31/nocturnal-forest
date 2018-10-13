@@ -481,6 +481,50 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212621479298731674, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d45a15877663ff4db23113edcecd2ca,
+        type: 3}
+    - target: {fileID: 4563877834222460, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563877834222460, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.002797395
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.32325083
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.000000011175871
+      objectReference: {fileID: 0}
+    - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.12010459
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
   m_IsPrefabAsset: 0
