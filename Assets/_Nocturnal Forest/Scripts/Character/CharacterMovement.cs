@@ -4,244 +4,277 @@ using UnityEngine;
 
 public class CharacterMovement : CharacterBase
 {
-	#region Exposed Fields
+    #region Exposed Fields
 
-	[SerializeField] private float m_MoveAccel = 10.0f;
-	[SerializeField] private float m_MoveDeaccel = 15.0f;
-	[SerializeField] private float m_MaxSpeed = 10.0f;
-	[SerializeField] private float m_JumpForce = 550.0f;
-	[SerializeField] private float m_JumpCounterForce = 10.0f;
-	[SerializeField] private float m_JumpFinishedCounterForce = 30.0f;
-	[SerializeField] private float m_DashDistance = 3.0f;
-	[SerializeField] private float m_DashCooldown = 5.0f;
-	[SerializeField] private GameObject m_Poof;
-	[SerializeField] private AudioClip whoosh;
-	[SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
-	[SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
-	[SerializeField] private LayerMask m_WhatIsGround;
+    [SerializeField] private float m_MoveAccel = 10.0f;
+    [SerializeField] private float m_MoveDeaccel = 15.0f;
+    [SerializeField] private float m_MaxSpeed = 10.0f;
+    [SerializeField] private float m_JumpForce = 550.0f;
+    [SerializeField] private float m_JumpCounterForce = 10.0f;
+    [SerializeField] private float m_JumpFinishedCounterForce = 30.0f;
+    [SerializeField] private float m_DashDistance = 3.0f;
+    [SerializeField] private float m_DashCooldown = 5.0f;
+    [SerializeField] private bool m_MoveOnLadder = false;
+    [SerializeField] private GameObject m_Poof;
+    [SerializeField] private AudioClip whoosh;
+    [SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
+    [SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
+    [SerializeField] private LayerMask m_WhatIsGround;
 
-	#endregion
+    #endregion
 
-	#region Hidden Fields
+    #region Hidden Fields
 
-	private Transform m_GroundCheck;
-	const float k_GroundedRadius = 0.05f;
+    private Transform m_GroundCheck;
+    const float k_GroundedRadius = 0.05f;
 
-	private Transform m_CeilingCheck;
-	const float k_CeilingRadius = 0.01f;
+    private Transform m_CeilingCheck;
+    const float k_CeilingRadius = 0.01f;
 
-	private Rigidbody2D m_Rigidbody2D;
+    private Rigidbody2D m_Rigidbody2D;
+    private CapsuleCollider2D m_Collider2D;
 
-	private bool m_FacingRight = true;
+    private bool m_FacingRight = true;
 
-	private float m_DesiredInput;
-	private float m_Input;
-	private bool m_Grounded;
-	private bool m_Crouched;
-	private bool m_Jump;
-	private bool m_JumpFinished;
-	private bool m_Dash;
-	private float m_NextDashTime;
+    private float m_DesiredInput;
+    private float m_Input;
+    private bool m_Grounded;
+    private bool m_Crouched;
+    private bool m_Jump;
+    private bool m_JumpFinished;
+    private bool m_Dash;
+    private float m_NextDashTime;
 
-
-	#endregion
-
-
-	public Vector2 Forward
-	{
-		get { return m_FacingRight ? Vector2.right : Vector2.left; }
-	}
-
-	public Vector2 Position
-	{
-		get { return transform.position; }
-	}
+    #endregion
 
 
-	#region Monobehaviours
+    public Vector2 Forward
+    {
+        get { return m_FacingRight ? Vector2.right : Vector2.left; }
+    }
+
+    public Vector2 Position
+    {
+        get { return transform.position; }
+    }
+
+    public bool OnLadder
+    {
+        get { return m_Collider2D.IsTouchingLayers(LayerMask.GetMask("Ladder")); }
+    }
 
 
-	private void Awake()
-	{
-		m_GroundCheck = transform.Find("GroundCheck");
-		m_CeilingCheck = transform.Find("CeilingCheck");
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-	}
+    #region Monobehaviours
 
 
-	private void FixedUpdate()
-	{
-		CheckGrounded();
-
-		HandleInput();
-
-		//HandleCrouch();
-		HandleJump();
-		HandleDash();
-
-		Move();
-	}
+    private void Awake()
+    {
+        m_GroundCheck = transform.Find("GroundCheck");
+        m_CeilingCheck = transform.Find("CeilingCheck");
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        m_Collider2D = GetComponent<CapsuleCollider2D>();
+    }
 
 
-	#endregion
+    private void FixedUpdate()
+    {
+        CheckGrounded();
+
+        HandleInput();
+
+        // Any vertical movement goes here
+        //HandleCrouch();
+        HandleJump();
+        HandleLadder();
+
+        // No vertical movement should be below here
+        HandleDash();
+        Move();
+    }
 
 
-	private void CheckGrounded()
-	{
-		m_Grounded = false;
-
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-			{
-				m_Grounded = true;
-				break;
-			}
-
-		}
-		//Anim.SetBool(CharacterAnimation.GROUNDED, m_Grounded);
-	}
-
-	private void HandleInput()
-	{
-		float accel = m_DesiredInput == 0 ? m_MoveDeaccel : m_MoveAccel;
-		if (!m_Grounded)
-		{
-			accel *= m_AirMultiplier;
-		}
-		else if (m_Crouched)
-		{
-			accel *= m_CrouchMultiplier;
-		}
-
-		m_Input = Mathf.Lerp(m_Input, m_DesiredInput, Time.deltaTime * accel);
-	}
-
-	private void Move()
-	{
-		Vector2 current = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right);
-		Vector2 input = Vector2.right * m_Input * m_MaxSpeed;
-
-		m_Rigidbody2D.AddForce(input - current, ForceMode2D.Impulse);
-
-		if (m_Input > 0 && !m_FacingRight || m_Input < 0 && m_FacingRight)
-		{
-			Flip();
-		}
-
-		Anim.SetFloat(CharacterAnimation.SPEED, Mathf.Abs(m_Input));
-	}
+    #endregion
 
 
-	private void HandleCrouch()
-	{
-		if (!m_Crouched)
-		{
-			// If the character has a ceiling preventing them from standing up, keep them crouching
-			if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
-			{
-				m_Crouched = true;
-			}
-		}
+    private void CheckGrounded()
+    {
+        m_Grounded = false;
 
-		// Set whether or not the character is crouching in the animator
-		//Anim.SetBool(CharacterAnimation.CROUCHED, m_Crouched);
-	}
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                m_Grounded = true;
+                break;
+            }
 
+        }
+        //Anim.SetBool(CharacterAnimation.GROUNDED, m_Grounded);
+    }
 
-	private void HandleDash()
-	{
-		if (Time.time < m_NextDashTime)
-		{
-			m_Dash = false;
-			return;
-		}
+    private void HandleInput()
+    {
+        float accel = m_DesiredInput == 0 ? m_MoveDeaccel : m_MoveAccel;
+        if (!m_Grounded)
+        {
+            accel *= m_AirMultiplier;
+        }
+        else if (m_Crouched)
+        {
+            accel *= m_CrouchMultiplier;
+        }
 
-		if (!m_Dash)
-		{
-			return;
-		}
+        m_Input = Mathf.Lerp(m_Input, m_DesiredInput, Time.deltaTime * accel);
+    }
 
-		m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
-		Instantiate(m_Poof, m_Rigidbody2D.position, Quaternion.identity);
+    private void Move()
+    {
+        if (!OnLadder || m_Grounded || m_MoveOnLadder)
+        {
+            Vector2 current = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right);
+            Vector2 input = Vector2.right * m_Input * m_MaxSpeed;
+            m_Rigidbody2D.AddForce(input - current, ForceMode2D.Impulse);
+        }
+        else
+        {
+            m_Rigidbody2D.velocity = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.up);
+        }
 
-		Universe.PlaySound(whoosh, 0.1f);
+        if (m_Input > 0 && !m_FacingRight || m_Input < 0 && m_FacingRight)
+        {
+            Flip();
+        }
 
-		m_NextDashTime = Time.time + m_DashCooldown;
-		m_Dash = false;
-	}
-
-
-	private void HandleJump()
-	{
-		if (m_Jump)
-		{
-			if (m_Grounded)
-			{
-				m_Grounded = false;
-				m_JumpFinished = false;
-				//Anim.SetBool(CharacterAnimation.GROUNDED, false);
-				m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce);
-			}
-
-			m_Jump = false;
-		}
-		else if (!m_Grounded)
-		{
-			float force = m_JumpFinished ? m_JumpFinishedCounterForce : m_JumpCounterForce;
-			m_Rigidbody2D.AddForce(Vector3.down * force * Time.fixedDeltaTime);
-		}
-		else
-		{
-			// Here we are on the ground and not jumping so we add "stick to ground" force
-			m_Rigidbody2D.AddForce(Vector2.down * 100);
-		}
-	}
+        Anim.SetFloat(CharacterAnimation.SPEED, Mathf.Abs(m_Input));
+    }
 
 
-	private void Flip()
-	{
-		m_FacingRight = !m_FacingRight;
+    private void HandleCrouch()
+    {
+        if (!m_Crouched)
+        {
+            // If the character has a ceiling preventing them from standing up, keep them crouching
+            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+            {
+                m_Crouched = true;
+            }
+        }
 
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
-
-
-	#region Exposed Methods
-
-	public void ProvideInput(float input)
-	{
-		m_DesiredInput = input;
-	}
+        // Set whether or not the character is crouching in the animator
+        //Anim.SetBool(CharacterAnimation.CROUCHED, m_Crouched);
+    }
 
 
-	public void SetCrouch(bool crouched)
-	{
-		//this.m_Crouched = crouched;
-	}
+    private void HandleDash()
+    {
+        if (Time.time < m_NextDashTime)
+        {
+            m_Dash = false;
+            return;
+        }
+
+        if (!m_Dash)
+        {
+            return;
+        }
+
+        m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
+        Instantiate(m_Poof, m_Rigidbody2D.position, Quaternion.identity);
+
+        Universe.PlaySound(whoosh, 0.1f);
+
+        m_NextDashTime = Time.time + m_DashCooldown;
+        m_Dash = false;
+    }
 
 
-	public void Dash()
-	{
-		m_Dash = Inventory?.Contains(x => x.Name == "Boots of Passion") ?? false;
-	}
+    private void HandleLadder()
+    {
+        if (!OnLadder)
+        {
+            return;
+        }
+
+        m_Rigidbody2D.velocity = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right); // Set the y velocity to zero
+
+        m_Rigidbody2D.AddForce(Vector2.up * Input.GetAxisRaw("Vertical") * 10000 * Time.fixedDeltaTime);
+    }
 
 
-	public void StartJump()
-	{
-		m_Jump = true;
-	}
+    private void HandleJump()
+    {
+        if (m_Jump)
+        {
+            if (m_Grounded)
+            {
+                m_Grounded = false;
+                m_JumpFinished = false;
+                //Anim.SetBool(CharacterAnimation.GROUNDED, false);
+                m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce);
+            }
+
+            m_Jump = false;
+        }
+        if (!m_Grounded)
+        {
+            if (!OnLadder)
+            {
+                float force = m_JumpFinished ? m_JumpFinishedCounterForce : m_JumpCounterForce;
+                m_Rigidbody2D.AddForce(Vector3.down * force * Time.fixedDeltaTime);
+            }
+
+        }
+        else if (m_Grounded)
+        {
+            // Here we are on the ground and not jumping so we add "stick to ground" force
+            m_Rigidbody2D.AddForce(Vector2.down * 100);
+        }
+    }
 
 
-	public void FinishJump()
-	{
-		m_JumpFinished = true;
-	}
+    private void Flip()
+    {
+        m_FacingRight = !m_FacingRight;
 
-	#endregion
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+
+    #region Exposed Methods
+
+    public void ProvideInput(float input)
+    {
+        m_DesiredInput = input;
+    }
+
+
+    public void SetCrouch(bool crouched)
+    {
+        //this.m_Crouched = crouched;
+    }
+
+
+    public void Dash()
+    {
+        m_Dash = Inventory?.Contains(x => x.Name == "Boots of Passion") ?? false;
+    }
+
+
+    public void StartJump()
+    {
+        m_Jump = true;
+    }
+
+
+    public void FinishJump()
+    {
+        m_JumpFinished = true;
+    }
+
+    #endregion
 }
