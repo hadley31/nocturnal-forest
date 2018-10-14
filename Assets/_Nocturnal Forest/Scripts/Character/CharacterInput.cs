@@ -19,6 +19,7 @@ public class CharacterInput : CharacterBase
         HandleDashInput();
 
         float input = Input.GetAxisRaw("Horizontal");
+        
         Movement.ProvideInput(input);
     }
 
