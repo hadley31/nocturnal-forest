@@ -20,6 +20,12 @@ public class Character : CharacterBase
     public UnityEvent onDie;
 
 
+    public bool Alive
+    {
+        get;
+        private set;
+    }
+
     public int XP
     {
         get { return m_XP; }
@@ -28,7 +34,6 @@ public class Character : CharacterBase
             if (m_XP != value)
             {
                 m_XP = value;
-
             }
         }
     }
@@ -38,6 +43,7 @@ public class Character : CharacterBase
         if (Current == null)
         {
             Current = this;
+            Spawn();
         }
     }
 
@@ -60,11 +66,15 @@ public class Character : CharacterBase
 
     public void Spawn()
     {
+        Alive = true;
+        Anim.SetBool(CharacterAnimation.ALIVE, true);
         onSpawn.Invoke();
     }
 
     public void Die()
     {
+        Alive = false;
+        Anim.SetBool(CharacterAnimation.ALIVE, false);
         onDie.Invoke();
     }
 }

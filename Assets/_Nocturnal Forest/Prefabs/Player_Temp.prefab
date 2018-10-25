@@ -283,6 +283,7 @@ MonoBehaviour:
   m_JumpFinishedCounterForce: 1500
   m_DashDistance: 3
   m_DashCooldown: 5
+  m_MoveOnLadder: 1
   m_Poof: {fileID: 1455377786394370, guid: 90f85bc883d451946ab02b54b912a7bc, type: 2}
   whoosh: {fileID: 8300000, guid: a21d8debfdc1de14ebc48abeb01fb6a8, type: 3}
   m_AirMultiplier: 0.5
@@ -327,18 +328,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDie:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114049220979474568}
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114721487230567988

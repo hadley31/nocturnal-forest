@@ -4,6 +4,19 @@ using UnityEngine;
 
 public abstract class CharacterBase : EntityBase
 {
+    private Character m_Character;
+    public Character Character
+    {
+        get
+        {
+            if (m_Character == null)
+            {
+                m_Character = GetComponent<Character>();
+            }
+            return m_Character;
+        }
+    }
+
     private Inventory m_Inventory;
     public Inventory Inventory
     {

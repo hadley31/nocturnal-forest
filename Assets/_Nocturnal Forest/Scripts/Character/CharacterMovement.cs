@@ -78,6 +78,11 @@ public class CharacterMovement : CharacterBase
 
     private void FixedUpdate()
     {
+        if (!Character.Alive)
+        {
+        //    return;
+        }
+
         CheckGrounded();
 
         HandleInput();
