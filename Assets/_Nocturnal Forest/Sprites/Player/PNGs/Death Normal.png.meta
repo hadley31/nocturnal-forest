@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: c48dcb9b1057dd8488de8718130b584c
+guid: 36d5bd488750a0148a1588b37e190e41
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Slash 1_0
-    21300002: Slash 1_1
-    21300004: Slash 1_2
-    21300006: Slash 1_3
-    21300008: Slash 1_4
-    21300010: Slash 1_5
-    21300012: Slash 1_6
+    21300000: Death Normal_0
+    21300002: Death Normal_1
+    21300004: Death Normal_2
+    21300006: Death Normal_3
+    21300008: Death Normal_4
+    21300010: Death Normal_5
+    21300012: Death Normal_6
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -91,7 +91,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slash 1_0
+      name: Death Normal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,13 +105,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9437a047866ac14797c0d3604724f6d
+      spriteID: 4389bfad1316e2044b0a97bcf673907b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_1
+      name: Death Normal_1
       rect:
         serializedVersion: 2
         x: 32
@@ -125,13 +125,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eae22a19bfe50e41b42dd362132a1a2
+      spriteID: fd827920d83b7dc4f81cce7852825b85
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_2
+      name: Death Normal_2
       rect:
         serializedVersion: 2
         x: 64
@@ -145,13 +145,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 613641e89c64320458537da3c06f070c
+      spriteID: 557fb64e4af83424d9ebdf6b27cb7820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_3
+      name: Death Normal_3
       rect:
         serializedVersion: 2
         x: 96
@@ -165,13 +165,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b63ca0bccca94b4fb3ee259986ea57a
+      spriteID: 23732b234e485bb4582eca844ea1b329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_4
+      name: Death Normal_4
       rect:
         serializedVersion: 2
         x: 128
@@ -185,13 +185,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc77d00708f6d4d4a9df2ab086ff86c9
+      spriteID: 46c21a58c6426af4e8693d7fc4fb7c4d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_5
+      name: Death Normal_5
       rect:
         serializedVersion: 2
         x: 160
@@ -205,13 +205,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9a987f47e182f442a70ef01dfa47279
+      spriteID: 8b1f971eb36b26845a6e4823734ab4cc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_6
+      name: Death Normal_6
       rect:
         serializedVersion: 2
         x: 192
@@ -225,7 +225,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d244254e4a0c67840bf3c89704f82b2f
+      spriteID: fc7a5fc99e235e4459c316ab4b6d3996
       vertices: []
       indices: 
       edges: []
@@ -233,7 +233,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c09bf01ef1bd1aa4aa1c20aef2d50a9c
+    spriteID: c5d5136d20ce60a4b810d7839a8827f4
     vertices: []
     indices: 
     edges: []

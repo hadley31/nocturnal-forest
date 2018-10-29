@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: c48dcb9b1057dd8488de8718130b584c
+guid: 0fb8ad40315b3954b8e19979b885cf30
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Slash 1_0
-    21300002: Slash 1_1
-    21300004: Slash 1_2
-    21300006: Slash 1_3
-    21300008: Slash 1_4
-    21300010: Slash 1_5
-    21300012: Slash 1_6
+    21300000: Jump Land_0
+    21300002: Jump Land_1
+    21300004: Jump Land_2
+    21300006: Jump Land_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -91,7 +88,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slash 1_0
+      name: Jump Land_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,13 +102,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9437a047866ac14797c0d3604724f6d
+      spriteID: a1a3ba8c1b1dfd04a8d839aabace8715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_1
+      name: Jump Land_1
       rect:
         serializedVersion: 2
         x: 32
@@ -125,13 +122,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eae22a19bfe50e41b42dd362132a1a2
+      spriteID: f8af354877239db429d1993e5994bf56
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_2
+      name: Jump Land_2
       rect:
         serializedVersion: 2
         x: 64
@@ -145,13 +142,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 613641e89c64320458537da3c06f070c
+      spriteID: b3c94eaad5138084f94fde2e42a5a3a7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slash 1_3
+      name: Jump Land_3
       rect:
         serializedVersion: 2
         x: 96
@@ -165,67 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b63ca0bccca94b4fb3ee259986ea57a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slash 1_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc77d00708f6d4d4a9df2ab086ff86c9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slash 1_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9a987f47e182f442a70ef01dfa47279
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slash 1_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d244254e4a0c67840bf3c89704f82b2f
+      spriteID: 981fb971d54035b48b3e1a5a0b19b975
       vertices: []
       indices: 
       edges: []
@@ -233,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c09bf01ef1bd1aa4aa1c20aef2d50a9c
+    spriteID: 148a92dd3511825419839cfe5cf0b2de
     vertices: []
     indices: 
     edges: []
