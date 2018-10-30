@@ -7,6 +7,11 @@ public class CharacterInput : CharacterBase
 {
     private void Update()
     {
+        if (!Character.Alive)
+        {
+            return;
+        }
+
         HandleMovementInput();
         HandleCombatInput();
     }
@@ -19,7 +24,7 @@ public class CharacterInput : CharacterBase
         HandleDashInput();
 
         float input = Input.GetAxisRaw("Horizontal");
-        
+
         Movement.ProvideInput(input);
     }
 

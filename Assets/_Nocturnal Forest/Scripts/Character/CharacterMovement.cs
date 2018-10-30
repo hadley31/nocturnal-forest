@@ -78,6 +78,11 @@ public class CharacterMovement : CharacterBase
 
     private void FixedUpdate()
     {
+        if (!Character.Alive)
+        {
+        //    return;
+        }
+
         CheckGrounded();
 
         HandleInput();
@@ -173,6 +178,7 @@ public class CharacterMovement : CharacterBase
         if (Time.time < m_NextDashTime)
         {
             m_Dash = false;
+            Anim.SetBool("Dashing", false);
             return;
         }
 
@@ -188,6 +194,7 @@ public class CharacterMovement : CharacterBase
 
         m_NextDashTime = Time.time + m_DashCooldown;
         m_Dash = false;
+        Anim.SetBool("Dashing", false);
     }
 
 
@@ -261,7 +268,18 @@ public class CharacterMovement : CharacterBase
 
     public void Dash()
     {
-        m_Dash = Inventory?.Contains(x => x.Name == "Boots of Passion") ?? false;
+        if(Inventory.Contains(x => x.Name == "Boots of Passion"))
+        {
+            m_Dash = true;
+            Anim.SetBool("Dashing", true);
+        }
+        else
+        {
+            m_Dash = false;
+        }
+
+        m_Dash = true;
+        Anim.SetBool("Dashing", true);
     }
 
 
