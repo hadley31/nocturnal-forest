@@ -574,41 +574,41 @@ Prefab:
         type: 3}
     - target: {fileID: 4563877834222460, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4563877834222460, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_Offset.y
-      value: 0.002797395
+      value: 0.029511452
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.32325083
+      value: 0.96254826
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_Offset.x
-      value: 0.000000011175871
+      value: 0.012324572
       objectReference: {fileID: 0}
     - target: {fileID: 61261989184813452, guid: d7515bc120d397c41a0855815ba62a8d,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.12010459
+      value: 0.29259253
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
@@ -8189,7 +8189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 6138aed65a46c68479cd77db828468c4, type: 2}
-  timeToCompleteCycle: 300
+  timeToCompleteCycle: 10
   transitionTime: 5
 --- !u!1 &2127758041
 GameObject:
