@@ -275,7 +275,7 @@ public class CharacterMovement : CharacterBase
         }
         else
         {
-            m_Dash = false;
+            m_Dash = true; //false; I turned on dash true for the alpha we have to turn in in the next 30 mins - Tyler
         }
         
     }

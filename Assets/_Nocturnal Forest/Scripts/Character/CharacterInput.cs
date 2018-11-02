@@ -67,7 +67,7 @@ public class CharacterInput : CharacterBase
 
     private void HandleDashInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.RightShift))
         {
             Movement.Dash();
         }
