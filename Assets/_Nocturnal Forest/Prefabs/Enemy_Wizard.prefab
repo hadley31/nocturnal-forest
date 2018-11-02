@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ProjectilePrefab: {fileID: 114561370255610684, guid: 54188a1be96810b4a95d4f992475cda7,
     type: 2}
-  m_ShootSpeed: 0.1
+  m_ShootSpeed: 0.3
   maxWarpDistance: 15
   warpCooldownTime: 5
 --- !u!212 &212621479298731674

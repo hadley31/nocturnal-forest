@@ -277,9 +277,7 @@ public class CharacterMovement : CharacterBase
         {
             m_Dash = false;
         }
-
-        m_Dash = true;
-        Anim.SetBool("Dashing", true);
+        
     }
 
 

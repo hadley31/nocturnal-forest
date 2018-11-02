@@ -562,6 +562,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/_Nocturnal Forest/Scenes/Level.unity
     - target: {fileID: 1678142133089200, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
       propertyPath: m_IsActive
@@ -613,6 +614,13 @@ Prefab:
       objectReference: {fileID: 0}
 =======
 >>>>>>> d2aafb8ca96b3d61d8fb613d42675a2327147f38:Assets/_Nocturnal Forest/Scenes/TestLevel.unity
+=======
+    - target: {fileID: 114909217557856842, guid: d7515bc120d397c41a0855815ba62a8d,
+        type: 2}
+      propertyPath: m_ShootSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+>>>>>>> f6e1cdbcacb6e3d289da93d8349ca4624ebc96bb
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7515bc120d397c41a0855815ba62a8d, type: 2}
   m_IsPrefabAsset: 0
