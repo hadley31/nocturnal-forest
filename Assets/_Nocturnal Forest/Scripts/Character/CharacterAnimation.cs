@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class CharacterAnimation : CharacterBase
 {
-	public const string GROUNDED = "Ground", SPEED = "Speed", CROUCHED = "Crouch", ATTACK = "Attack", ALIVE = "Alive";
+	public const string GROUNDED = "Ground", SPEED = "Speed", ATTACK = "Attack", ALIVE = "Alive", DASH = "Dash";
 
 	private Animator m_Animator;
 

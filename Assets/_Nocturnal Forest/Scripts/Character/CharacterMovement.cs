@@ -18,7 +18,6 @@ public class CharacterMovement : CharacterBase
     [SerializeField] private GameObject m_Poof;
     [SerializeField] private AudioClip whoosh;
     [SerializeField] [Range(0, 1)] private float m_AirMultiplier = 0.25f;
-    [SerializeField] [Range(0, 1)] private float m_CrouchMultiplier = 0.25f;
     [SerializeField] private LayerMask m_WhatIsGround;
 
     #endregion
@@ -39,7 +38,6 @@ public class CharacterMovement : CharacterBase
     private float m_DesiredInput;
     private float m_Input;
     private bool m_Grounded;
-    private bool m_Crouched;
     private bool m_Jump;
     private bool m_JumpFinished;
     private bool m_Dash;
@@ -88,7 +86,6 @@ public class CharacterMovement : CharacterBase
         HandleInput();
 
         // Any vertical movement goes here
-        //HandleCrouch();
         HandleJump();
         HandleLadder();
 
@@ -127,10 +124,6 @@ public class CharacterMovement : CharacterBase
         {
             accel *= m_AirMultiplier;
         }
-        else if (m_Crouched)
-        {
-            accel *= m_CrouchMultiplier;
-        }
 
         m_Input = Mathf.Lerp(m_Input, m_DesiredInput, Time.deltaTime * accel);
     }
@@ -157,28 +150,11 @@ public class CharacterMovement : CharacterBase
     }
 
 
-    private void HandleCrouch()
-    {
-        if (!m_Crouched)
-        {
-            // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
-            {
-                m_Crouched = true;
-            }
-        }
-
-        // Set whether or not the character is crouching in the animator
-        //Anim.SetBool(CharacterAnimation.CROUCHED, m_Crouched);
-    }
-
-
     private void HandleDash()
     {
         if (Time.time < m_NextDashTime)
         {
             m_Dash = false;
-            Anim.SetBool("Dashing", false);
             return;
         }
 
@@ -189,12 +165,11 @@ public class CharacterMovement : CharacterBase
 
         m_Rigidbody2D.MovePosition(m_Rigidbody2D.position + Forward * m_DashDistance);
         Instantiate(m_Poof, m_Rigidbody2D.position, Quaternion.identity);
-
+        Anim.Trigger(CharacterAnimation.DASH);
         Universe.PlaySound(whoosh, 0.1f);
 
         m_NextDashTime = Time.time + m_DashCooldown;
         m_Dash = false;
-        Anim.SetBool("Dashing", false);
     }
 
 
@@ -260,24 +235,12 @@ public class CharacterMovement : CharacterBase
     }
 
 
-    public void SetCrouch(bool crouched)
-    {
-        //this.m_Crouched = crouched;
-    }
-
-
     public void Dash()
     {
         if(Inventory.Contains(x => x.Name == "Boots of Passion"))
         {
             m_Dash = true;
-            Anim.SetBool("Dashing", true);
         }
-        else
-        {
-            m_Dash = true; //false; I turned on dash true for the alpha we have to turn in in the next 30 mins - Tyler
-        }
-        
     }
 
 

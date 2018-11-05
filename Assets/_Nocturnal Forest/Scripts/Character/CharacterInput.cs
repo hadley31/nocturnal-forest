@@ -19,7 +19,6 @@ public class CharacterInput : CharacterBase
 
     private void HandleMovementInput()
     {
-        HandleCrouchInput();
         HandleJumpInput();
         HandleDashInput();
 
@@ -34,19 +33,6 @@ public class CharacterInput : CharacterBase
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Combat.Attack();
-        }
-    }
-
-
-    private void HandleCrouchInput()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Movement.SetCrouch(true);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Movement.SetCrouch(false);
         }
     }
 
