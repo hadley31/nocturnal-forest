@@ -30,8 +30,7 @@ public class CharacterInput : CharacterBase
 
     private void HandleCombatInput()
     {
-        // if (Input.GetKeyDown(KeyCode.Mouse0))
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.J))
         {
             Combat.Attack();
         }

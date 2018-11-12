@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 212977913108108096}
   - component: {fileID: 60386702901032928}
   - component: {fileID: 50746569181683578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   jumpForce: 230
   horizontalForce: 130
   jumpCooldown: 2
-  attackDamage: 3
+  attackDamage: 8
   attackCooldown: 2
 --- !u!114 &114124026959923330
 MonoBehaviour:
