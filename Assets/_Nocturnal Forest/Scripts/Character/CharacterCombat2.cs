@@ -35,7 +35,7 @@ public class CharacterCombat2 : CharacterBase {
             else
             {
                 //can't do second attack
-                Anim.Trigger(CharacterAnimation.ATTACK1_RECOVERY);
+                //Anim.Trigger(CharacterAnimation.ATTACK1_RECOVERY);
             }
         }
         else if(phase==2)
@@ -49,7 +49,7 @@ public class CharacterCombat2 : CharacterBase {
             else
             {
                 //can't do third attack
-                Anim.Trigger(CharacterAnimation.ATTACK2_RECOVERY);
+                //Anim.Trigger(CharacterAnimation.ATTACK2_RECOVERY);
             }
         }
         else if(phase==3)
