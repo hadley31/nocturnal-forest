@@ -1921,6 +1921,36 @@ Prefab:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_MoveAccel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_MoveDeaccel
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_MaxSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_JumpForce
+      value: 365
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_JumpCounterForce
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_JumpFinishedCounterForce
+      value: 900
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed742ec5f3407b4f9d2092fe035a26e, type: 2}
   m_IsPrefabAsset: 0
