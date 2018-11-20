@@ -547,18 +547,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 45
-    m_Alignment: 0
+    m_MaxSize: 60
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Ur mom gey
+  m_Text: End of tutorial
 --- !u!222 &106780379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7118,7 +7118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 6138aed65a46c68479cd77db828468c4, type: 2}
-  timeToCompleteCycle: 10
+  timeToCompleteCycle: 100
   transitionTime: 5
 --- !u!114 &1334332900
 MonoBehaviour:
@@ -15030,7 +15030,7 @@ GameObject:
   - component: {fileID: 1880857611}
   - component: {fileID: 1880857616}
   m_Layer: 10
-  m_Name: New Sprite
+  m_Name: End Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15047,6 +15047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa9a041ad01c7c4a89afc7f4e9480f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireEnterOnce: 1
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -15068,6 +15069,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: EntUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  fireExitOnce: 0
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -15154,7 +15156,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 560595b2dc30d0c4182b100d4f62f89e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

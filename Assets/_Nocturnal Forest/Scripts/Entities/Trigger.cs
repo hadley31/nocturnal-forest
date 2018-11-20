@@ -9,12 +9,17 @@ public class EntUnityEvent : UnityEvent<Entity> { }
 [System.Serializable]
 public class IntUnityEvent : UnityEvent<int> { }
 
-[RequireComponent (typeof (Rigidbody2D)), RequireComponent (typeof (Collider2D))]
+[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Collider2D))]
 public sealed class Trigger : EntityBase
 {
+	public bool fireEnterOnce = false;
 	public EntUnityEvent onTriggerEnter;
 	public EntUnityEvent onTriggerStay;
+	public bool fireExitOnce = false;
 	public EntUnityEvent onTriggerExit;
+
+	private bool m_EnterFired = false;
+	private bool m_ExitFired = false;
 
 	public Collider2D Collider
 	{
@@ -29,40 +34,52 @@ public sealed class Trigger : EntityBase
 
 	#region Monobehaviours
 
-	private void Awake ()
+	private void Awake()
 	{
-		Collider = GetComponent<Collider2D> ();
-		Rigidbody = GetComponent<Rigidbody2D> ();
+		Collider = GetComponent<Collider2D>();
+		Rigidbody = GetComponent<Rigidbody2D>();
 
 		Collider.isTrigger = true;
 		Rigidbody.isKinematic = true;
 		Rigidbody.gravityScale = 0.0f;
 	}
 
-	private void OnTriggerEnter2D (Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		Entity ent = other.GetComponent<Entity> ();
-		if ( ent != null )
+		if (m_EnterFired)
 		{
-			onTriggerEnter.Invoke (ent);
+			return;
+		}
+
+		Entity ent = other.GetComponent<Entity>();
+		if (ent != null)
+		{
+			onTriggerEnter.Invoke(ent);
+			m_EnterFired = true;
 		}
 	}
 
-	private void OnTriggerStay2D (Collider2D other)
+	private void OnTriggerStay2D(Collider2D other)
 	{
-		Entity ent = other.GetComponent<Entity> ();
-		if ( ent != null )
+		Entity ent = other.GetComponent<Entity>();
+		if (ent != null)
 		{
-			onTriggerStay.Invoke (ent);
+			onTriggerStay.Invoke(ent);
 		}
 	}
 
-	private void OnTriggerExit2D (Collider2D other)
+	private void OnTriggerExit2D(Collider2D other)
 	{
-		Entity ent = other.GetComponent<Entity> ();
-		if ( ent != null )
+		if (m_ExitFired)
 		{
-			onTriggerExit.Invoke (ent);
+			return;
+		}
+
+		Entity ent = other.GetComponent<Entity>();
+		if (ent != null)
+		{
+			onTriggerExit.Invoke(ent);
+			m_ExitFired = true;
 		}
 	}
 

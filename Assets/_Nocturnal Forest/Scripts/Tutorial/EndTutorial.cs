@@ -13,7 +13,8 @@ public class EndTutorial : MonoBehaviour
 
 	private IEnumerator FadeOut(){
 		while (true){
-			if (fade.alpha > 0.99f){
+			if (fade.alpha > 0.9f){
+				Debug.Log("Tutorial Finished");
 				yield break;
 			}else{
 				fade.alpha = Mathf.Lerp(fade.alpha, 1, Time.deltaTime * 0.5f);
