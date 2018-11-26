@@ -29,6 +29,7 @@ public class SlimeBehaviour : EnemyBase
         {
             m_Jump = true;
         }
+        Health.DoCountDown();
     }
 
     private void FixedUpdate()
@@ -49,12 +50,13 @@ public class SlimeBehaviour : EnemyBase
 
     private void Attack(Health health)
     {
-        if (health == null)
+        if (health == null || health.GetInvicible()==true)
         {
             return;
         }
 
         health.Decrease(attackDamage);
+        health.BeginHurtAnimation();
         m_NextAttackTime = Time.time + attackCooldown;
     }
 

@@ -14,6 +14,7 @@ public class CharacterInput : CharacterBase
 
         HandleMovementInput();
         HandleCombatInput();
+        Health.DoCountDown();
     }
 
 
@@ -32,7 +33,7 @@ public class CharacterInput : CharacterBase
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.J))
         {
-            Combat.Attack();
+            Combat.ProcessAttack();
         }
     }
 

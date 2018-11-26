@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,10 @@ public class Health : EntityBase
 	public IntUnityEvent onHealthChanged;
 	public UnityEvent onDie;
 
+    protected bool invincible = false;
+    public int maxCoolDown = 20;
+
+    private int countDown = 20;
 	protected int m_health;
 
 	public virtual int Max
@@ -89,4 +94,36 @@ public class Health : EntityBase
 	{
 		Destroy(gameObject);
 	}
+
+    public bool GetInvicible()
+    {
+        return invincible;
+    }
+
+    public void DoCountDown()
+    {
+        if (invincible)
+        {
+            countDown -= 1;
+
+            if (countDown <= 0)
+            {
+                EndHurtAnimation();
+            }
+        }
+    }
+
+    public virtual void BeginHurtAnimation()
+    {
+        invincible = true;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        countDown = maxCoolDown;
+    }
+
+    public virtual void EndHurtAnimation()
+    {
+        invincible = false;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        countDown = 0;
+    }
 }
