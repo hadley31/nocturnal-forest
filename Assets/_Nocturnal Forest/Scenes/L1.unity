@@ -1237,6 +1237,11 @@ Prefab:
       propertyPath: maxCoolDown
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 212056904437138192, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb397b50769bf9a47891b8d15fa2dba2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed742ec5f3407b4f9d2092fe035a26e, type: 2}
   m_IsPrefabAsset: 0
@@ -13817,6 +13822,11 @@ Prefab:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212977913108108096, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb397b50769bf9a47891b8d15fa2dba2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
   m_IsPrefabAsset: 0
