@@ -9,4 +9,8 @@ public class SceneLoader : MonoBehaviour
 	{
 		SceneManager.LoadScene(name, LoadSceneMode.Single);
 	}
+
+	public void LoadCurrentScene(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 }

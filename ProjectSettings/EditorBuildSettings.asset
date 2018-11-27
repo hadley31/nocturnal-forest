@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Nocturnal Forest/Scenes/L1.unity
     guid: 6fcd0bfb85c56134a8f480654a30523b
+  - enabled: 1
+    path: Assets/_Nocturnal Forest/Scenes/L2.unity
+    guid: 4445a15fe8872c649bcaabb496854109
   m_configObjects: {}
