@@ -242,6 +242,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  maxCoolDown: 30
 --- !u!114 &114154623849055710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,19 +276,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06951a657392d464d8e6a56fbd52d055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveAccel: 5
-  m_MoveDeaccel: 20
-  m_MaxSpeed: 7
-  m_JumpForce: 450
-  m_JumpCounterForce: 750
-  m_JumpFinishedCounterForce: 1500
+  m_MoveAccel: 4
+  m_MoveDeaccel: 15
+  m_MaxSpeed: 5.5
+  m_JumpForce: 365
+  m_JumpCounterForce: 500
+  m_JumpFinishedCounterForce: 900
   m_DashDistance: 3
   m_DashCooldown: 5
   m_MoveOnLadder: 1
   m_Poof: {fileID: 1455377786394370, guid: 90f85bc883d451946ab02b54b912a7bc, type: 2}
   whoosh: {fileID: 8300000, guid: a21d8debfdc1de14ebc48abeb01fb6a8, type: 3}
   m_AirMultiplier: 0.5
-  m_CrouchMultiplier: 0.25
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 14608
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAttackDamage: 8
   baseAttackSpeed: 3
-  baseAttackDistance: 1
+  baseAttackDistance: 2
 --- !u!114 &114923402349670220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,7 +389,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bb397b50769bf9a47891b8d15fa2dba2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

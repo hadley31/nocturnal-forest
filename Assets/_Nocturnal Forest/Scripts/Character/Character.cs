@@ -6,75 +6,76 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Health))]
 public class Character : CharacterBase
 {
-    public static Character Current
-    {
-        get;
-        private set;
-    }
+	public static Character Current
+	{
+		get;
+		private set;
+	}
 
-    private int m_XP;
+	private int m_XP;
 
-    public IntUnityEvent onXpChanged;
+	public IntUnityEvent onXpChanged;
 
-    public UnityEvent onSpawn;
-    public UnityEvent onDie;
+	public UnityEvent onSpawn;
+	public UnityEvent onDie;
 
 
-    public bool Alive
-    {
-        get;
-        private set;
-    }
+	public bool Alive
+	{
+		get;
+		private set;
+	}
 
-    public int XP
-    {
-        get { return m_XP; }
-        set
-        {
-            if (m_XP != value)
-            {
-                m_XP = value;
-            }
-        }
-    }
+	public int XP
+	{
+		get { return m_XP; }
+		set
+		{
+			if (m_XP != value)
+			{
+				m_XP = value;
+			}
+		}
+	}
 
-    private void OnEnable()
-    {
-        if (Current == null)
-        {
-            Current = this;
-            Spawn();
-        }
-    }
+	private void OnEnable()
+	{
+		if (Current == null)
+		{
+			Current = this;
+			Spawn();
+		}
+	}
 
-    private void OnDisable()
-    {
-        if (Current == this)
-        {
-            Current = null;
-        }
-    }
+	private void OnDisable()
+	{
+		if (Current == this)
+		{
+			Current = null;
+		}
+	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ItemPickup pickup = collision.GetComponent<ItemPickup>();
-        if (pickup != null)
-        {
-            pickup.Pickup(this.Inventory);
-        }
-    }
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		ItemPickup pickup = collision.GetComponent<ItemPickup>();
+		if (pickup != null)
+		{
+			pickup.Pickup(this.Inventory);
+		}
+	}
 
-    public void Spawn()
-    {
-        Alive = true;
-        Anim.SetBool(CharacterAnimation.ALIVE, true);
-        onSpawn.Invoke();
-    }
+	public void Spawn()
+	{
+		Alive = true;
+		Anim.SetBool(CharacterAnimation.ALIVE, true);
+		onSpawn.Invoke();
+	}
 
-    public void Die()
-    {
-        Alive = false;
-        Anim.SetBool(CharacterAnimation.ALIVE, false);
-        onDie.Invoke();
-    }
+	public void Die()
+	{
+		print("Character::Die()");
+		Alive = false;
+		Anim.SetBool(CharacterAnimation.ALIVE, false);
+		onDie.Invoke();
+	}
 }

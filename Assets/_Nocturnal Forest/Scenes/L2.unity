@@ -8606,55 +8606,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1743705017696274, guid: 7ed742ec5f3407b4f9d2092fe035a26e, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_MoveAccel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_MoveDeaccel
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_MaxSpeed
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_JumpForce
-      value: 365
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_JumpCounterForce
-      value: 750
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301735020004698, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_JumpFinishedCounterForce
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 114800532398423492, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: baseAttackDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114049220979474568, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: maxCoolDown
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 212056904437138192, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bb397b50769bf9a47891b8d15fa2dba2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed742ec5f3407b4f9d2092fe035a26e, type: 2}
   m_IsPrefabAsset: 0

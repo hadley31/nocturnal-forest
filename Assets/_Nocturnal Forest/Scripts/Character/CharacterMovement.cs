@@ -78,7 +78,7 @@ public class CharacterMovement : CharacterBase
     {
         if (!Character.Alive)
         {
-        //    return;
+            return;
         }
 
         CheckGrounded();
@@ -200,6 +200,7 @@ public class CharacterMovement : CharacterBase
 
             m_Jump = false;
         }
+        
         if (!m_Grounded)
         {
             if (!OnLadder)
@@ -209,7 +210,7 @@ public class CharacterMovement : CharacterBase
             }
 
         }
-        else if (m_Grounded)
+        else
         {
             // Here we are on the ground and not jumping so we add "stick to ground" force
             m_Rigidbody2D.AddForce(Vector2.down * 100);

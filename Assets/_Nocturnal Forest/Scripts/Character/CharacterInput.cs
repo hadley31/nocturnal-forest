@@ -45,7 +45,7 @@ public class CharacterInput : CharacterBase
             Movement.StartJump();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
             Movement.FinishJump();
         }
