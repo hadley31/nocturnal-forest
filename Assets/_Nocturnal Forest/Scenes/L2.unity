@@ -1321,6 +1321,16 @@ Prefab:
       propertyPath: m_Name
       value: Slime (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpForce
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
   m_IsPrefabAsset: 0
@@ -1391,6 +1401,16 @@ Prefab:
     - target: {fileID: 1720448760096012, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
       propertyPath: m_Name
       value: Slime (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpCooldown
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
@@ -17091,6 +17111,11 @@ Prefab:
       propertyPath: m_Name
       value: Slime (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpCooldown
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
   m_IsPrefabAsset: 0
@@ -17230,6 +17255,11 @@ Prefab:
     - target: {fileID: 1720448760096012, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
       propertyPath: m_Name
       value: Slime (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107484701107204, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a,
+        type: 2}
+      propertyPath: jumpForce
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d84de8fc8e1c5649a8d2bd2e596a47a, type: 2}
