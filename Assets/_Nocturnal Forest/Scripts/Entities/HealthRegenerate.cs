@@ -14,6 +14,7 @@ public class HealthRegenerate : MonoBehaviour
 
 	private void Update()
 	{
+        
 		m_Timer += Time.deltaTime;
 
 		if (m_Timer > rate)

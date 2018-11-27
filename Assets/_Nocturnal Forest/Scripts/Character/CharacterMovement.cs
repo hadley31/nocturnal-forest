@@ -194,7 +194,7 @@ public class CharacterMovement : CharacterBase
             {
                 m_Grounded = false;
                 m_JumpFinished = false;
-                //Anim.SetBool(CharacterAnimation.GROUNDED, false);
+                Anim.SetBool(CharacterAnimation.GROUNDED, false);
                 m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce);
             }
 

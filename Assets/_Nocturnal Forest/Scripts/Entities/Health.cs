@@ -21,6 +21,7 @@ public class Health : EntityBase
 
     private int countDown = 20;
 	protected int m_health;
+    private bool dead = false;
 
 	public virtual int Max
 	{
@@ -36,16 +37,19 @@ public class Health : EntityBase
 		}
 		private set
 		{
-            if (GodMode)
+            if (dead == false)
             {
-                return;
+                if (GodMode)
+                {
+                    return;
+                }
+                m_health = Mathf.Clamp(value, 0, m_MaxHealth);
+                onHealthChanged.Invoke(m_health);
+                if (m_health <= 0)
+                {
+                    Die();
+                }
             }
-			m_health = Mathf.Clamp(value, 0, m_MaxHealth);
-			onHealthChanged.Invoke(m_health);
-			if (m_health <= 0)
-			{
-				Die();
-			}
 		}
 	}
 
@@ -92,6 +96,7 @@ public class Health : EntityBase
 	protected virtual void Die()
 	{
 		onDie.Invoke();
+        dead = true;
 	}
 
 	public virtual void Destroy()

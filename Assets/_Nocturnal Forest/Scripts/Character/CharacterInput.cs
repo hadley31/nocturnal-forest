@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterMovement))]
 public class CharacterInput : CharacterBase
@@ -9,7 +10,8 @@ public class CharacterInput : CharacterBase
     {
         if (!Character.Alive)
         {
-            return;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+
         }
 
         HandleMovementInput();

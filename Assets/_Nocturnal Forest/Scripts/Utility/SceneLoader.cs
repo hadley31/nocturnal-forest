@@ -11,6 +11,8 @@ public class SceneLoader : MonoBehaviour
 	}
 
 	public void LoadCurrentScene(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("PRESSED BUTTON");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 	}
 }
