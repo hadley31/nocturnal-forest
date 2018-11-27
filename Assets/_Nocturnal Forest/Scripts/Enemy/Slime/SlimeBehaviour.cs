@@ -50,7 +50,7 @@ public class SlimeBehaviour : EnemyBase
 
     private void Attack(Health health)
     {
-        if (health == null || health.GetInvicible()==true)
+        if (health == null || !health.Entity.Is<Character>())
         {
             return;
         }

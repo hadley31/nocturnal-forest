@@ -36,6 +36,10 @@ public class Health : EntityBase
 		}
 		private set
 		{
+            if (GodMode)
+            {
+                return;
+            }
 			m_health = Mathf.Clamp(value, 0, m_MaxHealth);
 			onHealthChanged.Invoke(m_health);
 			if (m_health <= 0)
