@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &54227950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4291398907323856, guid: 7ed742ec5f3407b4f9d2092fe035a26e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1257260415}
 --- !u!1 &165443806
 GameObject:
   m_ObjectHideFlags: 0
@@ -17572,7 +17577,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 54227950}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 3
