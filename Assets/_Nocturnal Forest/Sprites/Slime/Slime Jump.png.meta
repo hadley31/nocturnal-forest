@@ -119,10 +119,10 @@ TextureImporter:
       name: Slime Jump_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 160
-        width: 27
-        height: 18
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa97d55e9fc8d9f48b57040dc9d39da5
+      spriteID: dd6d553696f49fb429ccababf37e774e
       vertices: []
       indices: 
       edges: []
@@ -139,10 +139,10 @@ TextureImporter:
       name: Slime Jump_1
       rect:
         serializedVersion: 2
-        x: 36
+        x: 32
         y: 160
-        width: 25
-        height: 19
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad4716829219ed44bd208dbeb54cb2f
+      spriteID: b58d4bd1c723cd14daac2d74cec4055c
       vertices: []
       indices: 
       edges: []
@@ -159,10 +159,10 @@ TextureImporter:
       name: Slime Jump_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 160
-        width: 25
-        height: 20
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbc5c26311fcc0d4abab512818f50c90
+      spriteID: ddc058dd5c190a24cb7464ae9852c353
       vertices: []
       indices: 
       edges: []
@@ -179,10 +179,10 @@ TextureImporter:
       name: Slime Jump_3
       rect:
         serializedVersion: 2
-        x: 100
+        x: 96
         y: 160
-        width: 25
-        height: 22
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e02ec24d60c9c5f43bf08a11bb262c1a
+      spriteID: 48836abf0ef38ae4f9db71d7eb5ea71f
       vertices: []
       indices: 
       edges: []
@@ -199,10 +199,10 @@ TextureImporter:
       name: Slime Jump_4
       rect:
         serializedVersion: 2
-        x: 132
+        x: 128
         y: 160
-        width: 25
-        height: 31
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,7 +210,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72c5b9b205b14d04e9a2750bfeae62ff
+      spriteID: 20713209784aad04aba0105ac79ecdd9
       vertices: []
       indices: 
       edges: []
@@ -219,10 +219,10 @@ TextureImporter:
       name: Slime Jump_5
       rect:
         serializedVersion: 2
-        x: 164
-        y: 170
-        width: 25
-        height: 22
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,7 +230,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85f16ae09021b7f46b1f0d422c1fbc56
+      spriteID: 67390337d83116f459c585776a0a5905
       vertices: []
       indices: 
       edges: []
@@ -239,10 +239,10 @@ TextureImporter:
       name: Slime Jump_6
       rect:
         serializedVersion: 2
-        x: 195
-        y: 171
-        width: 27
-        height: 18
+        x: 192
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c297731d082d9541a4196a60c7fc048
+      spriteID: 5e6ca605b6656354abeabf46f4500235
       vertices: []
       indices: 
       edges: []
@@ -259,10 +259,10 @@ TextureImporter:
       name: Slime Jump_7
       rect:
         serializedVersion: 2
-        x: 225
-        y: 166
-        width: 30
-        height: 17
+        x: 224
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,7 +270,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8ee57fe1b09bd54f83c07b808699d7b
+      spriteID: e427358224c1b49409707b4eca883387
       vertices: []
       indices: 
       edges: []
@@ -279,10 +279,10 @@ TextureImporter:
       name: Slime Jump_8
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 128
-        width: 31
-        height: 15
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,7 +290,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaef64c2c922c3c4e8ed27f037504da4
+      spriteID: 98ae2ba6e9c5f544f9378a24e1355e2e
       vertices: []
       indices: 
       edges: []
@@ -299,10 +299,10 @@ TextureImporter:
       name: Slime Jump_9
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 128
-        width: 29
-        height: 17
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,7 +310,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2d044c4ccc5d044b85beaf2ef6d4f5
+      spriteID: f9b1e925923e75948adb282598a5de3e
       vertices: []
       indices: 
       edges: []
