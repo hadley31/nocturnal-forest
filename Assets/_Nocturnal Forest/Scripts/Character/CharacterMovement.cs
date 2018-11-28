@@ -130,6 +130,7 @@ public class CharacterMovement : CharacterBase
 
     private void Move()
     {
+        
         if (!OnLadder || m_Grounded || m_MoveOnLadder)
         {
             Vector2 current = Vector2.Scale(m_Rigidbody2D.velocity, Vector2.right);
@@ -188,6 +189,7 @@ public class CharacterMovement : CharacterBase
 
     private void HandleJump()
     {
+        
         if (m_Jump)
         {
             if (m_Grounded)
@@ -200,7 +202,7 @@ public class CharacterMovement : CharacterBase
 
             m_Jump = false;
         }
-        
+
         if (!m_Grounded)
         {
             if (!OnLadder)
@@ -213,8 +215,9 @@ public class CharacterMovement : CharacterBase
         else
         {
             // Here we are on the ground and not jumping so we add "stick to ground" force
-            m_Rigidbody2D.AddForce(Vector2.down * 100);
+            //m_Rigidbody2D.AddForce(Vector2.down * 100);
         }
+
     }
 
 

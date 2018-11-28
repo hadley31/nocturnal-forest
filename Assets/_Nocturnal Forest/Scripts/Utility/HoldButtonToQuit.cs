@@ -41,7 +41,7 @@ public class HoldButtonToQuit : MonoBehaviour
 		}
 	}
 
-    public static void quitEarly()
+    public void quitEarly()
     {
         Application.Quit();
     }
