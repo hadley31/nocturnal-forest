@@ -19,6 +19,7 @@ public sealed class Universe : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            AudioSource.Play();
         }
         else
         {

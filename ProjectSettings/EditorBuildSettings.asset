@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Nocturnal Forest/Scenes/L2.unity
     guid: 4445a15fe8872c649bcaabb496854109
+  - enabled: 1
+    path: Assets/_Nocturnal Forest/Scenes/JustToStartSound.unity
+    guid: 8b802c8f3e8580a48acebc1a691f894d
+  - enabled: 1
+    path: Assets/_Nocturnal Forest/Scenes/StartMenu.unity
+    guid: 134dd00e039cb9e4c9d4ab52b99e03bf
   m_configObjects: {}
