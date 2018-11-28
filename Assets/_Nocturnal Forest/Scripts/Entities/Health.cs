@@ -6,8 +6,12 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Entity))]
 public class Health : EntityBase
+
 {
-	[SerializeField]
+    public AudioSource slimeHurt;
+    //public AudioSource slimeDeath;
+
+    [SerializeField]
 	private int m_MaxHealth;
 
 	[SerializeField]
@@ -22,6 +26,8 @@ public class Health : EntityBase
     private int countDown = 20;
 	protected int m_health;
     private bool dead = false;
+
+
 
 	public virtual int Max
 	{
@@ -47,7 +53,7 @@ public class Health : EntityBase
                 onHealthChanged.Invoke(m_health);
                 if (m_health <= 0)
                 {
-                    Die();
+                   Die();
                 }
             }
 		}
@@ -67,7 +73,9 @@ public class Health : EntityBase
 	protected virtual void Start()
 	{
 		SetValueToMax();
-	}
+        slimeHurt = GetComponent<AudioSource>();
+        //slimeDeath = GetComponent<AudioSource>();
+    }
 
 	public virtual void SetValue(int value)
 	{
@@ -101,8 +109,9 @@ public class Health : EntityBase
 
 	public virtual void Destroy()
 	{
-		Destroy(gameObject);
-	}
+        //slimeDeath.Play();
+        Destroy(gameObject);
+    }
 
     public bool GetInvicible()
     {
@@ -126,6 +135,7 @@ public class Health : EntityBase
     {
         invincible = true;
         GetComponent<SpriteRenderer>().color = Color.red;
+        slimeHurt.Play();
         countDown = maxCoolDown;
     }
 
