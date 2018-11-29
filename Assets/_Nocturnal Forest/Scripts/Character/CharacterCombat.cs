@@ -46,7 +46,7 @@ public class CharacterCombat : CharacterBase
             //startAttack
             isAttacking = true;
             Anim.Trigger(CharacterAnimation.ATTACK);
-            swordSwing.Play();
+            //swordSwing.Play();
             canDoAttack2 = true;
             canDoAttack3 = true;
         }
@@ -120,7 +120,7 @@ public class CharacterCombat : CharacterBase
         {
             //continue
             //Do nothing
-            swordSwing.Play();
+            //swordSwing.Play();
             initiatedAttack2 = false;
             canDoAttack2 = false;
         }
@@ -142,7 +142,7 @@ public class CharacterCombat : CharacterBase
         {
             //continue
             //Do nothing
-            swordSwing.Play();
+            //swordSwing.Play();
             initiatedAttack3 = false;
             canDoAttack3 = false;
         }
@@ -176,6 +176,7 @@ public class CharacterCombat : CharacterBase
 
         // Send out a raycast from our position
         RaycastHit2D hitInfo = Physics2D.Raycast(Movement.Position, Movement.Forward, baseAttackDistance, mask);
+        swordSwing.Play();
 
         if (!hitInfo)
         {
