@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterCombat : CharacterBase
 {
+    public AudioSource swordSwing;
+
     public int baseAttackDamage = 8;
     public float baseAttackSpeed = 2.0f;
     public float baseAttackDistance = 1.0f;
@@ -27,6 +29,10 @@ public class CharacterCombat : CharacterBase
     private bool initiatedAttack3 = false;
     private bool isAttacking = false;
 
+    protected virtual void Start()
+    {
+        swordSwing = GetComponent<AudioSource>();
+    }
     public Vector2 AttackForward
     {
         get { return Vector2.right * Mathf.Sign(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x); }
@@ -40,6 +46,7 @@ public class CharacterCombat : CharacterBase
             //startAttack
             isAttacking = true;
             Anim.Trigger(CharacterAnimation.ATTACK);
+            swordSwing.Play();
             canDoAttack2 = true;
             canDoAttack3 = true;
         }
@@ -47,11 +54,13 @@ public class CharacterCombat : CharacterBase
         {
             //Do attack2
             initiatedAttack2 = true;
+            //swordSwing.Play();
         }
         else if (canDoAttack3 == true)
         {
             //Do attack3
             initiatedAttack3 = true;
+            //swordSwing.Play();
         }
     }
 
@@ -111,6 +120,7 @@ public class CharacterCombat : CharacterBase
         {
             //continue
             //Do nothing
+            swordSwing.Play();
             initiatedAttack2 = false;
             canDoAttack2 = false;
         }
@@ -132,6 +142,7 @@ public class CharacterCombat : CharacterBase
         {
             //continue
             //Do nothing
+            swordSwing.Play();
             initiatedAttack3 = false;
             canDoAttack3 = false;
         }

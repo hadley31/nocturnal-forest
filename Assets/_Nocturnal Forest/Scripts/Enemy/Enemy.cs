@@ -6,7 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Entity))]
 public class Enemy : EnemyBase
 {
-	public readonly List<Enemy> All = new List<Enemy>();
+    public AudioSource slimeHurt;
+
+    public readonly List<Enemy> All = new List<Enemy>();
 
 	public UnityEvent onDie;
 
@@ -23,9 +25,16 @@ public class Enemy : EnemyBase
 		All.Remove(this);
 	}
 
-	public void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void Start()
+    {
+        slimeHurt = GetComponent<AudioSource>();
+        //slimeDeath = GetComponent<AudioSource>();
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
 	{
 		Character c = collision.collider.GetComponentInParent<Character>();
+      
 
 		if (c != null)
 		{
@@ -33,12 +42,14 @@ public class Enemy : EnemyBase
 			if (Vector2.Dot(offset, Vector2.up) > 0.85f)
 			{
 				GetComponent<Health>().SetValue(0);
-			}
+                
+            }
 		}
 	}
 
 	public void Die()
 	{
 		onDie.Invoke();
-	}
+        slimeHurt.Play();
+    }
 }
